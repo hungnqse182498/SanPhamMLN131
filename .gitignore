@@ -1,17 +1,22 @@
+# dependencies
 node_modules/
-/dist
-/build
+.pnpm-store/
 
-# File log khi chạy code bị lỗi
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
+# build
+dist/
+build/
 
-# Các file cấu hình môi trường chứa mật khẩu, API Key (Bảo mật)
+# env
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*
 
+# IDE
+.vscode/
+.idea/
+
+# logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
