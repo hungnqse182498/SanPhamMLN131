@@ -16,75 +16,270 @@ const VN = { fontFamily: "Be Vietnam Pro, sans-serif" } as const;
 
 const QUIZ = [
   {
-    q: "Nhà nước xã hội chủ nghĩa có bản chất là gì?",
+    q: "Thế nào là tăng trưởng kinh tế bền vững?",
     opts: [
-      "Nhà nước của giai cấp vô sản thuần túy",
-      "Nhà nước của toàn thể nhân dân lao động, do Đảng Cộng sản lãnh đạo",
-      "Nhà nước liên minh các giai cấp bình đẳng",
-      "Nhà nước trung lập, không đại diện cho giai cấp nào",
+      "Là sự tăng trưởng ổn định lâu dài và tốc độ rất cao",
+      "Là sự tăng trưởng tương đối cao, ổn định trong thời gian tương đối dài",
+      "Sự tăng trưởng gắn liền với bảo vệ môi trường sinh thái và tiến bộ xã hội",
+      "Cả b và c",
+    ],
+    ans: 3,
+    ex: "Tăng trưởng kinh tế bền vững yêu cầu sự ổn định trong thời gian dài gắn liền với bảo vệ môi trường sinh thái và tiến bộ xã hội.",
+  },
+  {
+    q: "Trong các nhân tố tăng trưởng kinh tế, Đảng ta xác định nhân tố nào là cơ bản của tăng trưởng nhanh và bền vững?",
+    opts: ["Vốn", "Con người", "Khoa học và công nghệ", "Cơ cấu kinh tế, thể chế kinh tế"],
+    ans: 1,
+    ex: "Đảng ta xác định nhân tố con người là cơ bản, là mục tiêu và động lực của sự phát triển nhanh và bền vững.",
+  },
+  {
+    q: "Tăng trưởng kinh tế có vai trò thế nào?",
+    opts: [
+      "Là điều kiện để khắc phục tình trạng đói nghèo, lạc hậu",
+      "Để tạo thêm việc làm, giảm thất nghiệp",
+      "Để củng cố an ninh, quốc phòng",
+      "Cả a, b và c",
+    ],
+    ans: 3,
+    ex: "Tăng trưởng kinh tế đóng vai trò cốt lõi trong việc xóa đói giảm nghèo, giải quyết việc làm và củng cố tiềm lực an ninh quốc phòng.",
+  },
+  {
+    q: "Phát triển kinh tế bao gồm những nội dung nào?",
+    opts: [
+      "Gia tăng GNP hoặc GDP trên đầu người.",
+      "Cơ cấu kinh tế thay đổi theo hướng công nghiệp hóa.",
+      "Chất lượng cuộc sống tăng lên, môi trường được bảo vệ.",
+      "Cả a, b, c",
+    ],
+    ans: 3,
+    ex: "Phát triển kinh tế là một quá trình toàn diện bao gồm tăng trưởng quy mô kinh tế, dịch chuyển cơ cấu và nâng cao chất lượng cuộc sống.",
+  },
+  {
+    q: "Tiến bộ xã hội được thể hiện ở những mặt nào?",
+    opts: [
+      "Tiến bộ về kinh tế",
+      "Tiến bộ về chính trị, xã hội",
+      "Đời sống văn hoá, tinh thần ngày càng được nâng cao",
+      "Cả a, b, c",
+    ],
+    ans: 3,
+    ex: "Tiến bộ xã hội biểu hiện toàn diện trên cả ba mặt: kinh tế, chính trị - xã hội và đời sống văn hóa tinh thần.",
+  },
+  {
+    q: "Sự kiện gì đánh dấu việc V.I.Lênin đã biến chủ nghĩa xã hội từ lý luận thành hiện thực?",
+    opts: [
+      "Cách mạng tháng Mười Nga 1917",
+      "Sự ra đời của Liên Xô",
+      "Sự chiến thắng trong nội chiến",
+      "Cả a, b, c",
+    ],
+    ans: 0,
+    ex: "Cách mạng tháng Mười Nga năm 1917 thành công đã chính thức đưa CNXH từ lý luận trở thành hiện thực sinh động trên thế giới.",
+  },
+  {
+    q: "Bản chất của khủng hoảng kinh tế TBCN là:",
+    opts: [
+      "Khủng hoảng sản xuất 'thừa' so với nhu cầu xã hội",
+      "Khủng hoảng sản xuất 'thừa' so với sức mua có hạn của quần chúng",
+      "Sản xuất 'thiếu hụt' so với sức mua",
+      "Nền kinh tế rối loạn",
     ],
     ans: 1,
-    ex: "Nhà nước XHCN là nhà nước của nhân dân lao động, đặt dưới sự lãnh đạo của Đảng Cộng sản.",
+    ex: "Khủng hoảng kinh tế TBCN mang bản chất là khủng hoảng sản xuất thừa, nhưng là 'thừa' so với sức mua có hạn của người lao động chứ không phải so với nhu cầu thực tế.",
   },
   {
-    q: "Nguyên tắc tổ chức và hoạt động cơ bản của Nhà nước XHCN là?",
-    opts: [
-      "Phân quyền triệt để (lập pháp, hành pháp, tư pháp độc lập)",
-      "Đa đảng lãnh đạo luân phiên",
-      "Tập trung dân chủ",
-      "Phi tập trung hóa hoàn toàn",
-    ],
+    q: "Chu kỳ khủng hoảng kinh tế có mấy giai đoạn?",
+    opts: ["2", "3", "4", "5"],
     ans: 2,
-    ex: "Tập trung dân chủ là nguyên tắc tổ chức và hoạt động cơ bản của nhà nước XHCN.",
+    ex: "Một chu kỳ khủng hoảng kinh tế của CNTB thường trải qua 4 giai đoạn: Khủng hoảng, Tiêu điều, Phục hồi và Hưng thịnh.",
   },
   {
-    q: "Cơ quan quyền lực Nhà nước cao nhất của CHXHCN Việt Nam là?",
-    opts: ["Chủ tịch nước", "Chính phủ", "Quốc hội", "Hội đồng Nhà nước"],
+    q: "Cuộc đại khủng hoảng kinh tế của CNTB nổ ra vào thời kỳ nào?",
+    opts: ["1929 - 1933", "1954 - 1958", "1960 - 1963", "1973 - 1975"],
+    ans: 0,
+    ex: "Cuộc đại khủng hoảng kinh tế thế giới (hay còn gọi là thời kỳ Đại suy thoái) nổ ra khốc liệt nhất vào giai đoạn 1929 - 1933.",
+  },
+  {
+    q: "Ai là người đầu tiên chia tư bản thành bất biến (c) và khả biến (v)?",
+    opts: ["A.Smith", "D.Ricardo", "C.Mác", "F.Quesnay"],
     ans: 2,
-    ex: "Theo Hiến pháp, Quốc hội là cơ quan đại biểu cao nhất, cơ quan quyền lực nhà nước cao nhất.",
+    ex: "Các nhà kinh tế học trước đó chỉ chia thành tư bản cố định và lưu động. C.Mác là người đầu tiên chia thành tư bản bất biến (c) và khả biến (v) để làm rõ nguồn gốc bóc lột.",
   },
   {
-    q: "Chức năng đối nội của Nhà nước XHCN bao gồm?",
+    q: "Tư bản bất biến (c) là bộ phận tư bản:",
     opts: [
-      "Chỉ bảo vệ an ninh quốc phòng",
-      "Tổ chức xây dựng CNXH và trấn áp sự phản kháng của các thế lực thù địch",
-      "Chỉ phát triển kinh tế thị trường",
-      "Quản lý đối ngoại và ngoại giao",
+      "Giá trị chuyển dần vào sản phẩm",
+      "Không thay đổi về lượng, chuyển nguyên vẹn sang sản phẩm",
+      "Tăng lên trong quá trình sản xuất",
+      "Chuyển ngay sau một chu kỳ",
     ],
     ans: 1,
-    ex: "Chức năng đối nội gồm tổ chức xây dựng CNXH và trấn áp phản kháng của các thế lực thù địch.",
+    ex: "Tư bản bất biến (c) tồn tại dưới hình thức tư liệu sản xuất, giá trị của nó được bảo tồn và chuyển nguyên vẹn vào sản phẩm, không thay đổi về lượng giá trị.",
   },
   {
-    q: "Hình thức cấu trúc nhà nước của CHXHCN Việt Nam là?",
-    opts: ["Nhà nước liên bang", "Nhà nước liên minh", "Nhà nước đơn nhất", "Nhà nước quân chủ"],
-    ans: 2,
-    ex: "CHXHCN Việt Nam là nhà nước đơn nhất, lãnh thổ thống nhất.",
-  },
-  {
-    q: "Theo Mác-Lênin, Nhà nước XHCN ra đời bằng con đường nào?",
+    q: "Tư bản khả biến (v) là bộ phận tư bản:",
     opts: [
-      "Cải cách ôn hòa dần dần",
-      "Bầu cử dân chủ đa đảng",
-      "Cách mạng xã hội chủ nghĩa lật đổ nhà nước tư sản",
-      "Thỏa hiệp giữa giai cấp công nhân và tư sản",
+      "Luôn biến đổi về lượng",
+      "Sức lao động của công nhân làm thuê",
+      "Nguồn gốc của giá trị thặng dư",
+      "Cả b và c",
     ],
-    ans: 2,
-    ex: "NNXHCN ra đời qua cách mạng XHCN, lật đổ nhà nước tư sản và thiết lập chuyên chính vô sản.",
+    ans: 3,
+    ex: "Tư bản khả biến (v) dùng để mua sức lao động. Trong quá trình sản xuất, nó không những tái sản xuất ra giá trị của bản thân nó mà còn tạo ra giá trị thặng dư (m).",
   },
-];
-
-// ─── PUZZLE COMPONENT LABELS ─────────────────────────────────────────────────
-
-const COMP_LABELS = [
-  { name: "ĐẢNG CỘNG SẢN", role: "Đội tiên phong lãnh đạo" },
-  { name: "CÔNG NHÂN", role: "Giai cấp nòng cốt" },
-  { name: "NÔNG DÂN", role: "Lực lượng cơ bản" },
-  { name: "TRÍ THỨC", role: "Tầng lớp quan trọng" },
-  { name: "NHÀ NƯỚC", role: "Trung tâm quyền lực" },
-  { name: "PHÁP LUẬT", role: "Nền tảng pháp lý" },
-  { name: "QUÂN ĐỘI", role: "Bảo vệ Tổ quốc" },
-  { name: "KINH TẾ", role: "Nền tảng vật chất" },
-  { name: "NGOẠI GIAO", role: "Quan hệ quốc tế" },
+  {
+    q: "Tư bản cố định là gì?",
+    opts: [
+      "TLSX như nhà xưởng, máy móc",
+      "Tư bản bất biến",
+      "Giá trị chuyển dần sang sản phẩm",
+      "Cả a và c",
+    ],
+    ans: 3,
+    ex: "Tư bản cố định bao gồm các tư liệu sản xuất như nhà xưởng, thiết bị, máy móc có đặc điểm là tham gia toàn bộ vào sản xuất nhưng giá trị chuyển dần từng phần vào sản phẩm.",
+  },
+  {
+    q: "Tư bản lưu động bao gồm:",
+    opts: [
+      "Sức lao động, nguyên vật liệu, nhiên liệu",
+      "Tham gia từng phần vào sản xuất",
+      "Giá trị chuyển hết sang sản phẩm sau một chu kỳ",
+      "Cả a và c",
+    ],
+    ans: 3,
+    ex: "Tư bản lưu động gồm sức lao động (v) và một phần tư bản bất biến như nguyên nhiên vật liệu. Giá trị của nó chuyển hết toàn bộ vào sản phẩm sau một chu kỳ sản xuất.",
+  },
+  {
+    q: "Hao mòn hữu hình của máy móc là do:",
+    opts: [
+      "Do sử dụng và tác động tự nhiên",
+      "Do tiến bộ khoa học kỹ thuật",
+      "Do máy móc cũ",
+      "Khấu hao nhanh",
+    ],
+    ans: 0,
+    ex: "Hao mòn hữu hình là sự mất mát về giá trị sử dụng và giá trị do quá trình làm việc (ma sát, hao tổn) hoặc do tác động của tự nhiên khi không sử dụng.",
+  },
+  {
+    q: "Hao mòn vô hình là do:",
+    opts: [
+      "Sử dụng",
+      "Tiến bộ kỹ thuật tạo ra máy mới rẻ hơn/năng suất hơn",
+      "Tự nhiên",
+      "Cả a và b",
+    ],
+    ans: 1,
+    ex: "Hao mòn vô hình xảy ra thuần túy do sự phát triển của lực lượng sản xuất và tiến bộ kỹ thuật, làm xuất hiện các máy móc mới có hiệu suất cao hơn hoặc giá thành rẻ hơn.",
+  },
+  {
+    q: "Tích lũy tư bản là:",
+    opts: [
+      "Biến một phần giá trị thặng dư thành tư bản",
+      "Tích lũy có trước CNTB",
+      "Tích lũy do bạo lực",
+      "Tiết kiệm tư bản",
+    ],
+    ans: 0,
+    ex: "Tích lũy tư bản là việc nhà tư bản sử dụng một phần giá trị thặng dư (m) để gộp vào tư bản ban đầu, tiếp tục mở rộng quy mô sản xuất.",
+  },
+  {
+    q: "Nguồn gốc của tích lũy tư bản là:",
+    opts: ["Tài sản kế thừa", "Lợi nhuận", "Giá trị thặng dư", "Của cái tiết kiệm"],
+    ans: 2,
+    ex: "Nguồn gốc duy nhất cấu thành nên tích lũy tư bản chính là giá trị thặng dư (m) do công nhân làm thuê tạo ra bị nhà tư bản chiếm đoạt.",
+  },
+  {
+    q: "Tích tụ tư bản là:",
+    opts: [
+      "Tăng quy mô tư bản cá biệt bằng tư bản hóa giá trị thặng dư",
+      "Kết quả của tích lũy",
+      "Làm tăng tư bản xã hội",
+      "Cả a, b, c",
+    ],
+    ans: 3,
+    ex: "Tích tụ tư bản là quá trình tăng quy mô tư bản cá biệt bằng cách trích từ giá trị thặng dư thu được. Nó là kết quả trực tiếp của tích lũy và làm tăng tổng tư bản xã hội.",
+  },
+  {
+    q: "Tập trung tư bản là:",
+    opts: [
+      "Hợp nhất các tư bản cá biệt nhỏ thành lớn",
+      "Làm tăng tư bản xã hội",
+      "Phảnánh quan hệ trực tiếp các nhà tư bản",
+      "Cả a, c",
+    ],
+    ans: 3,
+    ex: "Tập trung tư bản là sự liên kết, tổ hợp các tư bản cá biệt sẵn có trong xã hội thành một tư bản lớn hơn. Nó không làm tăng tổng tư bản xã hội mà chỉ sắp xếp lại cơ cấu sở hữu.",
+  },
+  {
+    q: "Sự giống nhau giữa tích tụ và tập trung tư bản là:",
+    opts: ["Nguồn gốc", "Vai trò", "Tăng quy mô tư bản cá biệt", "Tăng quy mô tư bản xã hội"],
+    ans: 2,
+    ex: "Dù có nguồn gốc và tác động đến tư bản xã hội khác nhau, nhưng cả tích tụ và tập trung tư bản đều dẫn đến kết quả chung là làm tăng quy mô của một tư bản cá biệt.",
+  },
+  {
+    q: "Cấu tạo hữu cơ của tư bản là:",
+    opts: [
+      "Quan hệ TLSX và sức lao động",
+      "Quan hệ giữa tư bản bất biến (c) và tư bản khả biến (v)",
+      "Phản ánh mặt hiện vật và giá trị",
+      "Cả a, b, c",
+    ],
+    ans: 3,
+    ex: "Cấu tạo hữu cơ là cấu tạo giá trị của tư bản (c/v), do cấu tạo kỹ thuật (TLSX/Sức lao động) quyết định và phản ánh sự biến động của cấu tạo kỹ thuật đó.",
+  },
+  {
+    q: "Thời gian chu chuyển của tư bản gồm:",
+    opts: [
+      "Thời gian sản xuất và thời gian lưu thông",
+      "Thời gian lao động và thời gian dự trữ",
+      "Thời gian sản xuất và thời gian tiêu thụ",
+      "Thời gian lưu thông và thời gian gián đoạn",
+    ],
+    ans: 0,
+    ex: "Thời gian chu chuyển của tư bản được tính bằng tổng thời gian tư bản nằm trong vòng quay sản xuất kết hợp với thời gian thực hiện lưu thông trên thị trường.",
+  },
+  {
+    q: "Nhân tố nào ảnh hưởng đến thời gian sản xuất?",
+    opts: ["Dự trữ sản xuất", "Tính chất ngành sản xuất", "Năng suất lao động", "Cả a, b, c"],
+    ans: 3,
+    ex: "Thời gian sản xuất chịu tác động lớn bởi các yếu tố đặc thù của ngành, trình độ công nghệ tăng năng suất và thời gian vật tư nằm ở dạng dự trữ chuẩn bị.",
+  },
+  {
+    q: "Cách rút ngắn thời gian sản xuất?",
+    opts: ["Cải tiến kỹ thuật", "Tăng năng suất lao động", "Cải tiến tổ chức sản xuất", "Cả a, b, c"],
+    ans: 3,
+    ex: "Để tối ưu và giảm thời gian sản xuất, doanh nghiệp phải ứng dụng công nghệ hiện đại, thúc đẩy năng suất và tổ chức dây chuyền khoa học.",
+  },
+  {
+    q: "Cách rút ngắn thời gian lưu thông?",
+    opts: ["Giảm giá", "Nâng cao chất lượng", "Quảng cáo, cải tiến phương thức bán", "Cả a, b, c"],
+    ans: 3,
+    ex: "Thời gian lưu thông được rút ngắn thông qua các chiến lược thị trường như điều chỉnh giá cả phù hợp, nâng chất lượng sản phẩm và tối ưu kênh phân phối, tiếp thị.",
+  },
+  {
+    q: "Thu nhập quốc dân về mặt giá trị bao gồm:",
+    opts: ["c + v + m", "Toàn bộ giá trị mới (v+m) tạo ra", "Chỉ có c+v", "v+m"],
+    ans: 1,
+    ex: "Thu nhập quốc dân là phần giá trị mới hoàn toàn do lao động sống tạo ra trong năm, được ký hiệu về mặt lượng giá trị là (v + m).",
+  },
+  {
+    q: "Ai phát hiện phạm trù cấu tạo hữu cơ của tư bản?",
+    opts: ["A.Smith", "D.Ricardo", "C.Mác", "Ph.Ăngghen"],
+    ans: 2,
+    ex: "C.Mác là nhà kinh tế chính trị đầu tiên phát hiện ra cấu tạo hữu cơ (c/v), vạch rõ mối quan hệ khăng khít giữa kỹ thuật và giá trị tư bản.",
+  },
+  {
+    q: "Tỷ suất lợi nhuận (p') phản ánh:",
+    opts: ["Trình độ bóc lột", "Nghệ thuật quản lý", "Hiệu quả đầu tư", "Cả a, b, c"],
+    ans: 2,
+    ex: "Trình độ bóc lột do tỷ suất giá trị thặng dư (m') phản ánh. Còn tỷ suất lợi nhuận (p') chỉ phản ánh mức độ sinh lời và hiệu quả đầu tư của toàn bộ vốn.",
+  },
+  {
+    q: "Nguyên nhân hình thành lợi nhuận bình quân:",
+    opts: ["Cạnh tranh trong ngành", "Cạnh tranh giữa các ngành", "Chạy theo giá trị thặng dư", "Cạnh tranh nội bộ ngành"],
+    ans: 1,
+    ex: "Cạnh tranh giữa các ngành khác nhau dẫn đến dòng vốn tự do di chuyển từ ngành có tỷ suất lợi nhuận thấp sang ngành cao, hình thành nên tỷ suất lợi nhuận bình quân.",
+  },
 ];
 
 // ─── UTILS ───────────────────────────────────────────────────────────────────
@@ -98,166 +293,25 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
-// ─── NATIONAL EMBLEM SVG CONTENT ─────────────────────────────────────────────
-// 450×450 composition — split into 3×3 grid (150×150 per piece)
 
-function EmblemContent() {
-  const COG_ANGLES = [0, 45, 90, 135, 180, 225, 270, 315];
-  // Star centered at (225, 175), outer r=92, inner r=38
-  const starPts = "225,83 247,144 313,147 261,187 279,249 225,213 171,249 189,187 138,147 203,144";
-  return (
-    <>
-      {/* Background */}
-      <rect width="450" height="450" fill="#C62828" />
-
-      {/* Subtle grid lines for structure */}
-      <line x1="150" y1="0" x2="150" y2="450" stroke="rgba(255,215,0,0.08)" strokeWidth="1" />
-      <line x1="300" y1="0" x2="300" y2="450" stroke="rgba(255,215,0,0.08)" strokeWidth="1" />
-      <line x1="0" y1="150" x2="450" y2="150" stroke="rgba(255,215,0,0.08)" strokeWidth="1" />
-      <line x1="0" y1="300" x2="450" y2="300" stroke="rgba(255,215,0,0.08)" strokeWidth="1" />
-
-      {/* Outer gold border */}
-      <rect x="5" y="5" width="440" height="440" fill="none" stroke="#FFD700" strokeWidth="7" />
-      <rect x="15" y="15" width="420" height="420" fill="none" stroke="#FFD700" strokeWidth="1.5" />
-
-      {/* Corner ornaments */}
-      {([[17, 17], [433, 17], [17, 433], [433, 433]] as [number, number][]).map(([cx, cy], i) => (
-        <rect key={i} x={cx - 7} y={cy - 7} width="14" height="14" fill="#FFD700"
-          transform={`rotate(45,${cx},${cy})`} />
-      ))}
-
-      {/* Mid-edge ornaments (small diamonds) */}
-      {[112, 225, 337].map(pos => (
-        <g key={pos}>
-          <rect x={pos - 4} y={8} width="8" height="8" fill="#FFD700" transform={`rotate(45,${pos},12)`} />
-          <rect x={pos - 4} y={434} width="8" height="8" fill="#FFD700" transform={`rotate(45,${pos},438)`} />
-          <rect x={8} y={pos - 4} width="8" height="8" fill="#FFD700" transform={`rotate(45,12,${pos})`} />
-          <rect x={434} y={pos - 4} width="8" height="8" fill="#FFD700" transform={`rotate(45,438,${pos})`} />
-        </g>
-      ))}
-
-      {/* Top title */}
-      <text x="225" y="42" textAnchor="middle" fill="#FFD700" fontSize="24" fontWeight="700"
-        letterSpacing="5" style={OS}>NHÀ NƯỚC</text>
-
-      {/* ── LEFT WHEAT BUNDLE (base at 72,308) ── */}
-      <g stroke="#F9A825" strokeWidth="2.2" fill="none">
-        <line x1="72" y1="308" x2="18" y2="135" />
-        <line x1="72" y1="308" x2="33" y2="113" />
-        <line x1="72" y1="308" x2="52" y2="103" />
-        <line x1="72" y1="308" x2="67" y2="96" />
-        <line x1="72" y1="308" x2="82" y2="97" />
-        <line x1="72" y1="308" x2="95" y2="105" />
-        <line x1="72" y1="308" x2="106" y2="118" />
-        {/* stem tie */}
-        <line x1="58" y1="262" x2="86" y2="262" stroke="#F9A825" strokeWidth="5" strokeLinecap="round" />
-      </g>
-      <ellipse cx="18" cy="126" rx="5" ry="10" fill="#F9A825" transform="rotate(-18,18,126)" />
-      <ellipse cx="33" cy="104" rx="5" ry="10" fill="#F9A825" transform="rotate(-12,33,104)" />
-      <ellipse cx="52" cy="94" rx="5" ry="10" fill="#F9A825" transform="rotate(-6,52,94)" />
-      <ellipse cx="67" cy="87" rx="5" ry="10" fill="#F9A825" />
-      <ellipse cx="82" cy="88" rx="5" ry="10" fill="#F9A825" />
-      <ellipse cx="95" cy="96" rx="5" ry="10" fill="#F9A825" transform="rotate(8,95,96)" />
-      <ellipse cx="106" cy="109" rx="5" ry="10" fill="#F9A825" transform="rotate(15,106,109)" />
-
-      {/* ── RIGHT WHEAT BUNDLE (base at 378,308) ── */}
-      <g stroke="#F9A825" strokeWidth="2.2" fill="none">
-        <line x1="378" y1="308" x2="432" y2="135" />
-        <line x1="378" y1="308" x2="417" y2="113" />
-        <line x1="378" y1="308" x2="398" y2="103" />
-        <line x1="378" y1="308" x2="383" y2="96" />
-        <line x1="378" y1="308" x2="368" y2="97" />
-        <line x1="378" y1="308" x2="355" y2="105" />
-        <line x1="378" y1="308" x2="344" y2="118" />
-        <line x1="364" y1="262" x2="392" y2="262" stroke="#F9A825" strokeWidth="5" strokeLinecap="round" />
-      </g>
-      <ellipse cx="432" cy="126" rx="5" ry="10" fill="#F9A825" transform="rotate(18,432,126)" />
-      <ellipse cx="417" cy="104" rx="5" ry="10" fill="#F9A825" transform="rotate(12,417,104)" />
-      <ellipse cx="398" cy="94" rx="5" ry="10" fill="#F9A825" transform="rotate(6,398,94)" />
-      <ellipse cx="383" cy="87" rx="5" ry="10" fill="#F9A825" />
-      <ellipse cx="368" cy="88" rx="5" ry="10" fill="#F9A825" />
-      <ellipse cx="355" cy="96" rx="5" ry="10" fill="#F9A825" transform="rotate(-8,355,96)" />
-      <ellipse cx="344" cy="109" rx="5" ry="10" fill="#F9A825" transform="rotate(-15,344,109)" />
-
-      {/* ── GOLD STAR ── */}
-      <polygon points={starPts} fill="#FFD700" />
-      <polygon points={starPts} fill="none" stroke="#C8960C" strokeWidth="1.5" />
-
-      {/* ── GOVERNMENT BUILDING ── */}
-      {/* Pediment */}
-      <polygon points="178,258 272,258 225,232" fill="#FFD700" />
-      {/* Entablature */}
-      <rect x="170" y="258" width="110" height="9" fill="#FFD700" />
-      {/* 4 Columns */}
-      <rect x="178" y="267" width="12" height="58" fill="#FFD700" rx="1" />
-      <rect x="205" y="267" width="12" height="58" fill="#FFD700" rx="1" />
-      <rect x="233" y="267" width="12" height="58" fill="#FFD700" rx="1" />
-      <rect x="260" y="267" width="12" height="58" fill="#FFD700" rx="1" />
-      {/* Stylobate */}
-      <rect x="165" y="325" width="120" height="9" fill="#FFD700" />
-      <rect x="158" y="334" width="134" height="5" fill="rgba(255,215,0,0.6)" />
-
-      {/* ── COGWHEEL (center 225,390) ── */}
-      <g transform="translate(225,390)">
-        {COG_ANGLES.map(a => (
-          <rect key={a} x="-9" y="-63" width="18" height="16" fill="#FFD700" rx="2"
-            transform={`rotate(${a})`} />
-        ))}
-        <circle r="50" fill="#FFD700" />
-        <circle r="31" fill="#C62828" />
-        <circle r="12" fill="#FFD700" />
-      </g>
-
-      {/* ── BOTTOM RIBBON ── */}
-      <rect x="30" y="420" width="390" height="24" fill="#1A237E" />
-      <text x="225" y="436" textAnchor="middle" fill="#FFFFFF" fontSize="13" fontWeight="700"
-        letterSpacing="2.5" style={OS}>XÃ HỘI CHỦ NGHĨA VIỆT NAM</text>
-    </>
-  );
-}
 
 // ─── PUZZLE PIECE (variable grid size) ───────────────────────────────────────
 
 function PuzzlePiece({
   correctIdx, gridSize, isSelected, isSolved, onClick, imageUrl,
 }: {
-  correctIdx: number; gridSize: number;
-  isSelected: boolean; isSolved: boolean; onClick: () => void;
-  imageUrl: string;
+  correctIdx: number; gridSize: number; isSelected: boolean; isSolved: boolean; onClick: () => void; imageUrl: string;
 }) {
   const sz = 450 / gridSize;
   const col = correctIdx % gridSize;
   const row = Math.floor(correctIdx / gridSize);
-  const clipId = `pc${gridSize}x${correctIdx}`;
-  const showLbl = gridSize === 3 && !isSolved && correctIdx < COMP_LABELS.length;
-  const lbl = showLbl ? COMP_LABELS[correctIdx] : null;
 
   return (
-    <svg viewBox={`0 0 ${sz} ${sz}`} width={sz} height={sz} onClick={onClick}
-      style={{ cursor: isSolved ? "default" : "pointer", display: "block" }}>
-      {/* <defs>
-        <clipPath id={clipId}><rect width={sz} height={sz} /></clipPath>
-      </defs>
-      <g clipPath={`url(#${clipId})`} transform={`translate(${-col * sz},${-row * sz})`}>
-        <EmblemContent />
-      </g> */}
+    <svg viewBox={`0 0 ${sz} ${sz}`} width={sz} height={sz} onClick={onClick} style={{ cursor: isSolved ? "default" : "pointer", display: "block" }}>
       <g transform={`translate(${-col * sz},${-row * sz})`}>
         <image href={imageUrl} width="450" height="450" preserveAspectRatio="xMidYMid slice" />
       </g>
-      {lbl && (
-        <g>
-          <rect width={sz} height={sz} fill="rgba(10,8,5,0.6)" />
-          <rect x={sz * 0.1} y={sz * 0.14} width={sz * 0.8} height="1.5" fill="#FFD700" opacity=".6" />
-          <text x={sz / 2} y={sz / 2 - 5} textAnchor="middle" fill="#FFD700"
-            fontSize={sz * 0.09} fontWeight="700" style={OS}>{lbl.name}</text>
-          <text x={sz / 2} y={sz / 2 + 11} textAnchor="middle" fill="rgba(255,255,255,.7)"
-            fontSize={sz * 0.065} style={VN}>{lbl.role}</text>
-          <rect x={sz * 0.1} y={sz * 0.72} width={sz * 0.8} height="1" fill="#FFD700" opacity=".4" />
-        </g>
-      )}
-      {isSelected && !isSolved && (
-        <rect width={sz} height={sz} fill="none" stroke="#FFD700" strokeWidth={4} />
-      )}
+      {isSelected && !isSolved && <rect width={sz} height={sz} fill="none" stroke="#FFD700" strokeWidth={4} />}
       <rect width={sz} height={sz} fill="none" stroke="rgba(255,255,255,.15)" strokeWidth=".5" />
     </svg>
   );
@@ -291,7 +345,7 @@ const items: { id: Page; label: string; Icon: any }[] = [
           </div>
           <div className="leading-none">
             <p className="text-[#D32F2F] text-[10px] uppercase tracking-[0.3em] font-semibold" style={VN}>
-              Khoa Học Chủ Nghĩa Xã Hội
+              Chủ Nghĩa Xã Hội Khoa Học
             </p>
             <p className="text-white font-bold text-sm" style={OS}>NHÀ NƯỚC XHCN</p>
           </div>
@@ -320,34 +374,63 @@ const items: { id: Page; label: string; Icon: any }[] = [
   );
 }
 
-// ─── HOME PAGE ────────────────────────────────────────────────────────────────
-
-// (sections rendered inline in HomePage)
-
+// Component con hỗ trợ tiêu đề phân đoạn
 function SectionHeader({ tag, title }: { tag: string; title: string }) {
   return (
     <div className="flex items-center gap-4 mb-6">
       <div className="bg-[#D32F2F] text-white text-xs font-bold tracking-[0.25em] px-3 py-1" style={OS}>{tag}</div>
-      <h2 className="text-3xl font-bold text-[#111111] leading-tight" style={OS}>{title}</h2>
+      <h2 className="text-2xl md:text-3xl font-bold text-[#111111] leading-tight" style={OS}>{title}</h2>
       <div className="flex-1 h-px bg-[#111111]/15" />
     </div>
   );
 }
 
-function BulletRow({ items, color = "#D32F2F" }: { items: string[]; color?: string }) {
-  return (
-    <ul className="space-y-1.5">
-      {items.map(pt => (
-        <li key={pt} className="flex items-start gap-2 text-sm" style={VN}>
-          <span style={{ color }} className="mt-0.5 flex-shrink-0 font-bold">▸</span>
-          <span className="text-[#111111]/80">{pt}</span>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
 function HomePage() {
+  // ─── MANAGEMENT STATES (CÁC TRẠNG THÁI TƯƠNG TÁC) ──────────────────────────
+  const [activeReasonTab, setActiveReasonTab] = useState<"ly_luan" | "thuc_tien">("ly_luan");
+  const [activeBirthFactor, setActiveBirthFactor] = useState<number>(0);
+  const [activeNatureTab, setActiveNatureTab] = useState<number>(0);
+  const [activeFuncBasis, setActiveFuncBasis] = useState<string>("scope");
+  const [compareMode, setCompareMode] = useState<"bo_lot" | "xhcn">("xhcn");
+  const [activeRelationStep, setActiveRelationStep] = useState<number>(0);
+  const [activeToolCard, setActiveToolCard] = useState<number>(0);
+
+  // ─── DATA MOCKING ──────────────────────────────────────────────────────────
+  const birthFactors = [
+    { title: "Kinh tế", detail: "Lực lượng sản xuất phát triển ở trình độ xã hội hóa cao xung đột gay gắt với quan hệ sản xuất tư bản mang tính tư hữu tư nhân tư bản chủ nghĩa." },
+    { title: "Xã hội", detail: "Giai cấp công nhân và nhân dân lao động bị áp bức, bóc lột nặng nề, tích tụ mâu thuẫn dẫn đến các cuộc đấu tranh trực diện chống lại giai cấp tư sản." },
+    { title: "Chính trị - Xã hội", detail: "Sự trưởng thành của giai cấp công nhân cùng sự ra đời của Đảng Cộng sản lãnh đạo, kết hợp liên minh công - nông lật đổ nhà nước tư sản." }
+  ];
+
+  const natureData = [
+    { title: "Chính trị", tag: "BẢN CHẤT CHÍNH TRỊ", points: ["Mang bản chất giai cấp công nhân, đại diện lợi ích nhân dân lao động", "Do Đảng Cộng sản lãnh đạo tối cao và duy nhất", "Nhân dân là chủ thể quyền lực: Nhà nước của dân, do dân, vì dân"] },
+    { title: "Kinh tế", tag: "BẢN CHẤT KINH TẾ", points: ["Chịu sự quy định của cơ sở kinh tế xã hội chủ nghĩa", "Chế độ công hữu đối với tư liệu sản xuất chủ yếu giữ vai trò chủ đạo", "Không ngừng nâng cao đời sống vật chất, cải thiện thu nhập cho toàn dân"] },
+    { title: "Tư tưởng - Văn hóa", tag: "BẢN CHẤT TƯ TƯỞNG - XÃ HỘI", points: ["Chủ nghĩa Mác – Lênin là nền tảng lý luận tinh thần định hướng", "Kế thừa, chọn lọc những giá trị văn hóa tiến bộ của nhân loại", "Hướng tới xóa bỏ phân hóa giai cấp, giảm bất bình đẳng xã hội"] }
+  ];
+
+  const functionData: Record<string, { title: string; items: string[] }[]> = {
+    scope: [
+      { title: "Chức năng đối nội", items: ["Quản lý kinh tế - xã hội nội địa", "Giữ vững an ninh chính trị, trật tự"] },
+      { title: "Chức năng đối ngoại", items: ["Bảo vệ chủ quyền toàn vẹn lãnh thổ", "Mở rộng hợp tác, hội nhập quốc tế"] }
+    ],
+    fields: [
+      { title: "Chính trị", items: ["Tổ chức thực hiện quyền lực", "Bảo vệ chế độ chính trị xã hội"] },
+      { title: "Kinh tế", items: ["Quản lý và điều tiết nền kinh tế", "Nâng cao năng suất lao động"] },
+      { title: "Văn hóa, xã hội", items: ["Chăm lo giáo dục, y tế, khoa học", "Bảo vệ quyền con người tối ưu"] }
+    ],
+    power: [
+      { title: "Giai cấp (Trấn áp)", items: ["Trấn áp thiểu số bóc lột cũ phá hoại", "Bảo vệ thành quả cách mạng của dân"] },
+      { title: "Xã hội (Xây dựng)", items: ["Tổ chức kiến tạo xã hội mới", "Mang lại năng suất lao động cao hơn"] }
+    ]
+  };
+
+  const toolCards = [
+    { title: "Thể Chế Hóa Ý Chí", body: "Nhà nước cụ thể hóa ý chí, nguyện vọng và quyền lực của nhân dân thành các văn bản pháp luật, chính sách và hành lang pháp lý. Quyền làm chủ không chỉ là tuyên bố suông mà được đảm bảo bằng sức mạnh cưỡng chế hành pháp." },
+    { title: "Xác Lập Quyền & Trách Nhiệm", body: "Thông qua hệ thống pháp luật, Nhà nước phân định rõ quyền hạn và trách nhiệm của mỗi công dân — giúp người dân hiểu rõ ranh giới quyền làm chủ và tham gia quản lý xã hội một cách chủ động." },
+    { title: "Công Cụ Bảo Vệ", body: "Nhà nước sử dụng bộ máy tư pháp để ngăn chặn và trừng trị các hành vi độc đoán, xâm phạm quyền lợi chính đáng của người dân; bảo vệ nền dân chủ trước thế lực thù địch." },
+    { title: "Phương Thức Thực Hiện Dân Chủ", body: "Tạo điều kiện vận hành cơ chế thực tiễn để nhân dân tham gia trực tiếp và gián tiếp vào quản lý nhà nước. Hiện thực hóa triệt để phương châm dân bàn, dân làm, dân kiểm tra." }
+  ];
+
   return (
     <div className="pt-16 min-h-screen bg-[#F5E9D0]">
 
@@ -360,7 +443,7 @@ function HomePage() {
         <div className="relative max-w-5xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="flex-1">
             <div className="inline-block bg-[#D32F2F] text-white text-xs font-bold tracking-[0.3em] px-3 py-1 mb-5" style={OS}>
-              CHƯƠNG III — HỌC THUYẾT MÁC-LÊNIN
+              CHƯƠNG IV — DÂN CHỦ XÃ HỘI CHỦ NGHĨA VÀ NHÀ NƯỚC XÃ HỘI CHỦ NGHĨA
             </div>
             <h1 className="text-5xl md:text-7xl font-bold text-white leading-none mb-4" style={OS}>NHÀ NƯỚC</h1>
             <h2 className="text-3xl md:text-5xl font-bold text-[#D32F2F] leading-none mb-6" style={OS}>XÃ HỘI CHỦ NGHĨA</h2>
@@ -369,7 +452,7 @@ function HomePage() {
               dân chủ của nhà nước trong giai đoạn quá độ lên chủ nghĩa xã hội.
             </p>
           </div>
-          <div className="flex-shrink-0 opacity-85">
+          {/* <div className="flex-shrink-0 opacity-85">
             <svg viewBox="0 0 150 150" width="150" height="150">
               <rect width="150" height="150" fill="#C62828" />
               <rect x="3" y="3" width="144" height="144" fill="none" stroke="#FFD700" strokeWidth="3" />
@@ -387,380 +470,342 @@ function HomePage() {
               </g>
               <text x="75" y="12" textAnchor="middle" fill="#FFD700" fontSize="7" fontWeight="700" style={OS}>NHÀ NƯỚC</text>
             </svg>
-          </div>
+          </div> */}
         </div>
       </div>
 
-      {/* ── STATS BAR ── */}
-      <div className="bg-[#D32F2F] py-4 px-6">
-        <div className="max-w-5xl mx-auto flex flex-wrap justify-center gap-10">
-          {[["4","Đặc Trưng"],["3","Loại Chức Năng"],["3","Hình Thức"],["4","Nguyên Tắc"],["4","Vai Trò Dân Chủ"]].map(([n,l]) => (
-            <div key={l} className="text-center">
-              <p className="text-4xl font-bold text-white leading-none" style={OS}>{n}</p>
-              <p className="text-white/70 text-xs uppercase tracking-wider mt-1" style={VN}>{l}</p>
-            </div>
+      {/* ── STATS BAR (SỬA LỖI CUỘN LỆCH VỊ TRÍ) ── */}
+      <div className="bg-[#D32F2F] py-4 px-6 sticky top-16 z-40 shadow-md">
+        <div className="max-w-5xl mx-auto flex flex-wrap justify-center gap-6 md:gap-10">
+          {[
+            { n: "1.1", l: "Sự Ra Đời của Nhà Nước", target: "su-ra-doi" },
+            { n: "1.2", l: "Bản Chất Ba Phương Diện", target: "ban-chat" },
+            { n: "1.3", l: "Cấu Trúc Chức Năng", target: "cau-truc-chuc-nang" },
+            { n: "2.1", l: "Cơ Sơ Dân Chủ Biện Chứng", target: "co-so-dan-chu" },
+            { n: "2.2", l: "Công Cụ Thực Thi Quyền", target: "cong-cu-thuc-thi" }
+          ].map(({ n, l, target }) => (
+            <button 
+              key={l} 
+              onClick={() => {
+                const element = document.getElementById(target);
+                if (element) {
+                  const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+                  const offsetPosition = elementPosition - 150; 
+                  window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                  });
+                }
+              }}
+              className="text-center hover:scale-105 transition-transform duration-200 cursor-pointer focus:outline-none"
+            >
+              <p className="text-2xl md:text-3xl font-bold text-white leading-none" style={OS}>{n}</p>
+              <p className="text-white/70 text-[10px] md:text-[11px] uppercase tracking-wider mt-1.5" style={VN}>{l}</p>
+            </button>
           ))}
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 py-10 space-y-10">
+      <div className="max-w-5xl mx-auto px-4 py-10 space-y-12">
 
-        {/* ── LÝ DO NGHIÊN CỨU ── */}
-        <div className="bg-white border-2 border-[#111111] overflow-hidden">
-          <div className="bg-[#111111] px-6 py-3 flex items-center gap-3">
-            <span className="text-[#FFD700] font-bold" style={OS}>※</span>
-            <span className="text-white font-bold tracking-[0.2em] text-sm" style={OS}>LÝ DO NGHIÊN CỨU SẢN PHẨM</span>
-          </div>
-          <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x-2 divide-[#EDD9A3]">
-            <div className="p-6">
-              <p className="text-[#D32F2F] text-xs font-bold tracking-[0.2em] mb-3" style={OS}>VỀ MẶT LÝ LUẬN</p>
-              <p className="text-sm text-[#111111]/80 leading-relaxed" style={VN}>
-                Sản phẩm giúp người học hiểu rõ bản chất của Nhà nước XHCN, mối quan hệ giữa nhà nước
-                và quyền làm chủ của nhân dân, cũng như vai trò của nhà nước trong quá trình xây dựng xã hội mới.
-              </p>
+        {/* ── THAO TÁC 1: LÝ DO NGHIÊN CỨU (Tab Chuyển Đổi) ── */}
+        <div className="bg-white border-2 border-[#111111] overflow-hidden shadow-[4px_4px_0px_0px_#111111]">
+          <div className="bg-[#111111] px-6 py-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <span className="text-[#FFD700] font-bold" style={OS}>※</span>
+              <span className="text-white font-bold tracking-[0.2em] text-sm" style={OS}>LÝ DO NGHIÊN CỨU SẢN PHẨM</span>
             </div>
-            <div className="p-6">
-              <p className="text-[#D32F2F] text-xs font-bold tracking-[0.2em] mb-3" style={OS}>VỀ MẶT THỰC TIỄN</p>
-              <p className="text-sm text-[#111111]/80 leading-relaxed" style={VN}>
-                Nâng cao nhận thức chính trị cho thế hệ trẻ, tìm hiểu Nhà nước pháp quyền XHCN Việt Nam,
-                quyền và nghĩa vụ công dân; lan tỏa thông tin chính thống và đưa lý luận đến gần hơn đời sống.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* ── SỰ RA ĐỜI ── */}
-        <div>
-          <SectionHeader tag="1.1" title="Sự Ra Đời của Nhà Nước XHCN" />
-          {/* Khái niệm */}
-          <div className="bg-[#D32F2F] text-white p-6 mb-4 relative overflow-hidden">
-            <div className="absolute right-4 top-2 text-[64px] font-bold opacity-10 leading-none select-none" style={OS}>?</div>
-            <p className="text-[#FFD700] text-xs font-bold tracking-[0.2em] mb-2" style={OS}>KHÁI NIỆM</p>
-            <p className="text-sm leading-relaxed text-white/90 relative z-10" style={VN}>
-              Nhà nước xã hội chủ nghĩa là nhà nước mà ở đó <strong>quyền lực thuộc về giai cấp công nhân và nhân dân lao động</strong>;
-              được sinh ra từ cách mạng xã hội chủ nghĩa và có sứ mệnh xây dựng thành công chủ nghĩa xã hội,
-              đưa nhân dân lao động trở thành người làm chủ trên mọi lĩnh vực của đời sống xã hội.
-            </p>
-            <p className="text-white/50 text-xs mt-2 relative z-10" style={VN}>— Theo quan điểm của chủ nghĩa Mác – Lênin</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-4">
-            {/* Nguyên nhân */}
-            <div className="bg-[#111111] text-white p-6 relative overflow-hidden">
-              <div className="absolute right-3 top-2 text-[64px] font-bold opacity-10 leading-none select-none" style={OS}>①</div>
-              <p className="text-[#FFD700] text-xs font-bold tracking-[0.2em] mb-3 relative z-10" style={OS}>NGUYÊN NHÂN RA ĐỜI</p>
-              <div className="space-y-3 relative z-10">
-                <div>
-                  <p className="text-[#D32F2F] text-xs font-bold mb-1" style={OS}>VỀ KINH TẾ</p>
-                  <p className="text-white/75 text-xs leading-relaxed" style={VN}>
-                    Lực lượng sản xuất phát triển cao nhưng bị kìm hãm bởi chế độ sở hữu tư nhân tư bản chủ nghĩa.
-                  </p>
-                </div>
-                <div>
-                  <p className="text-[#D32F2F] text-xs font-bold mb-1" style={OS}>VỀ XÃ HỘI</p>
-                  <p className="text-white/75 text-xs leading-relaxed" style={VN}>
-                    Giai cấp công nhân và nhân dân lao động bị bóc lột, dẫn đến các cuộc đấu tranh chống giai cấp tư sản.
-                  </p>
-                </div>
-                <div className="border-t border-white/10 pt-3">
-                  <p className="text-white/60 text-xs leading-relaxed" style={VN}>
-                    Khi mâu thuẫn lên đỉnh điểm, cách mạng vô sản nổ ra dưới sự lãnh đạo của Đảng Cộng sản,
-                    lật đổ nhà nước tư sản và thiết lập nhà nước xã hội chủ nghĩa.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Ý nghĩa */}
-            <div className="bg-[#EDD9A3] border-2 border-[#111111] p-6 relative overflow-hidden">
-              <div className="absolute right-3 top-2 text-[64px] font-bold opacity-10 leading-none select-none" style={OS}>②</div>
-              <p className="text-[#D32F2F] text-xs font-bold tracking-[0.2em] mb-3 relative z-10" style={OS}>Ý NGHĨA SỰ RA ĐỜI</p>
-              <BulletRow items={[
-                "Đánh dấu sự thay thế nhà nước tư sản bằng một kiểu nhà nước mới",
-                "Tạo công cụ chính trị để nhân dân lao động thực hiện quyền làm chủ",
-                "Là phương tiện tổ chức xây dựng xã hội mới — xã hội XHCN",
-                "Từng bước xóa bỏ áp bức, bóc lột, hướng tới giải phóng con người",
-              ]} />
-              <div className="mt-4 bg-[#D32F2F] text-white px-3 py-2 text-xs leading-relaxed" style={VN}>
-                <strong style={OS}>KẾT LUẬN:</strong> Sự ra đời của NNXHCN là kết quả tất yếu của đấu tranh giai cấp —
-                công cụ để xây dựng xã hội công bằng, dân chủ, tiến bộ.
-              </div>
+            <div className="flex gap-1 bg-white/10 p-1 border border-white/20">
+              <button 
+                onClick={() => setActiveReasonTab("ly_luan")}
+                className={`px-3 py-1 text-xs font-bold transition-all ${activeReasonTab === "ly_luan" ? "bg-[#D32F2F] text-white" : "text-white/60 hover:text-white"}`}
+                style={OS}
+              >
+                MẶT LÝ LUẬN
+              </button>
+              <button 
+                onClick={() => setActiveReasonTab("thuc_tien")}
+                className={`px-3 py-1 text-xs font-bold transition-all ${activeReasonTab === "thuc_tien" ? "bg-[#D32F2F] text-white" : "text-white/60 hover:text-white"}`}
+                style={OS}
+              >
+                MẶT THỰC TIỄN
+              </button>
             </div>
           </div>
-        </div>
-
-        {/* ── 1.2 BẢN CHẤT CỦA NNXHCN ── */}
-        <div>
-          <SectionHeader tag="1.2" title="Bản Chất của Nhà Nước XHCN" />
-          <div className="bg-[#111111] text-white p-6 mb-4">
-            <p className="text-[#FFD700] text-xs font-bold tracking-[0.2em] mb-2" style={OS}>KHÁI QUÁT</p>
-            <p className="text-sm leading-relaxed text-white/85" style={VN}>
-              Nhà nước XHCN là kiểu nhà nước mới, <strong>khác về chất</strong> so với tất cả các kiểu nhà nước đã tồn tại
-              trong lịch sử — được xây dựng nhằm phục vụ lợi ích nhân dân lao động, hướng tới xã hội công bằng, dân chủ, văn minh.
-              Bản chất thể hiện trên <strong className="text-[#FFD700]">ba phương diện</strong>: chính trị, kinh tế và tư tưởng – văn hóa xã hội.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-0">
-            {/* Chính trị */}
-            <div className="bg-[#D32F2F] text-white p-6 relative overflow-hidden">
-              <p className="text-[64px] font-bold leading-none opacity-10 absolute right-2 top-0 select-none" style={OS}>1</p>
-              <p className="text-[#FFD700] text-xs font-bold tracking-[0.2em] mb-3 relative z-10" style={OS}>BẢN CHẤT CHÍNH TRỊ</p>
-              <ul className="space-y-2.5 relative z-10">
-                {[
-                  "Mang bản chất giai cấp công nhân, đại diện lợi ích nhân dân lao động trong xây dựng xã hội mới",
-                  "Do Đảng Cộng sản lãnh đạo — định hướng nhà nước và xã hội xây dựng CNXH",
-                  "Nhân dân là chủ thể quyền lực: Nhà nước của dân, do dân, vì dân — mọi quyền lực phục vụ nhân dân",
-                ].map(pt => (
-                  <li key={pt} className="flex items-start gap-2 text-xs" style={VN}>
-                    <span className="text-[#FFD700] mt-0.5 flex-shrink-0">▸</span>
-                    <span className="text-white/85">{pt}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {/* Kinh tế */}
-            <div className="bg-[#111111] text-white p-6 relative overflow-hidden">
-              <p className="text-[64px] font-bold leading-none opacity-10 absolute right-2 top-0 select-none" style={OS}>2</p>
-              <p className="text-[#FFD700] text-xs font-bold tracking-[0.2em] mb-3 relative z-10" style={OS}>BẢN CHẤT KINH TẾ</p>
-              <ul className="space-y-2.5 relative z-10">
-                {[
-                  "Chịu sự quy định của cơ sở kinh tế xã hội chủ nghĩa",
-                  "Chế độ công hữu hoặc sở hữu xã hội đối với tư liệu sản xuất chủ yếu giữ vai trò quan trọng",
-                  "Không ngừng nâng cao đời sống vật chất, cải thiện thu nhập và chất lượng cuộc sống cho mọi người dân",
-                ].map(pt => (
-                  <li key={pt} className="flex items-start gap-2 text-xs" style={VN}>
-                    <span className="text-[#FFD700] mt-0.5 flex-shrink-0">▸</span>
-                    <span className="text-white/85">{pt}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {/* Tư tưởng – Văn hóa */}
-            <div className="bg-[#EDD9A3] border-t-2 border-[#111111] p-6 relative overflow-hidden">
-              <p className="text-[64px] font-bold leading-none opacity-10 absolute right-2 top-0 select-none text-[#111111]" style={OS}>3</p>
-              <p className="text-[#D32F2F] text-xs font-bold tracking-[0.2em] mb-3 relative z-10" style={OS}>TƯ TƯỞNG – VĂN HÓA XÃ HỘI</p>
-              <ul className="space-y-2.5 relative z-10">
-                {[
-                  "Hệ tư tưởng chủ đạo: Chủ nghĩa Mác – Lênin là nền tảng lý luận định hướng",
-                  "Kế thừa và chọn lọc những giá trị tiến bộ của các nhà nước trước",
-                  "Hướng tới xóa bỏ phân hóa giai cấp, giảm bất bình đẳng xã hội",
-                  "Bảo đảm quyền cơ bản: tự do, bình đẳng, học tập, lao động, tham gia quản lý xã hội",
-                ].map(pt => (
-                  <li key={pt} className="flex items-start gap-2 text-xs" style={VN}>
-                    <span className="text-[#D32F2F] mt-0.5 flex-shrink-0">▸</span>
-                    <span className="text-[#111111]/80">{pt}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        {/* ── BẢN CHẤT + HÌNH THỨC (tóm tắt) ── */}
-        <div className="grid md:grid-cols-2 gap-0">
-          <div className="bg-[#D32F2F] text-white p-8 relative overflow-hidden">
-            <p className="text-[80px] font-bold leading-none opacity-10 absolute top-2 right-4 select-none" style={OS}>01</p>
-            <div className="relative">
-              <span className="inline-block text-xs font-bold tracking-[0.3em] border border-white/40 px-2 py-0.5 mb-3" style={OS}>BẢN CHẤT</span>
-              <h2 className="text-3xl font-bold mb-3 leading-tight" style={OS}>Bản Chất</h2>
-              <p className="text-sm leading-relaxed text-white/85 mb-4" style={VN}>
-                Nhà nước XHCN là nhà nước của giai cấp công nhân và toàn thể nhân dân lao động, đặt dưới sự lãnh đạo
-                của Đảng Cộng sản. Mang tính nhân dân sâu sắc — khác về chất so với các nhà nước bóc lột.
-              </p>
-              <BulletRow color="#FFD700" items={[
-                "Nhà nước của nhân dân lao động",
-                "Do Đảng Cộng sản lãnh đạo",
-                "Tính nhân dân và tính giai cấp",
-                "Thực hiện nền dân chủ XHCN",
-              ]} />
-            </div>
-          </div>
-          <div className="bg-[#F5E9D0] border-2 border-[#111111] p-8 relative overflow-hidden">
-            <p className="text-[80px] font-bold leading-none opacity-10 absolute top-2 right-4 select-none" style={OS}>03</p>
-            <div className="relative">
-              <span className="inline-block text-xs font-bold tracking-[0.3em] border border-[#111111]/40 px-2 py-0.5 mb-3" style={OS}>HÌNH THỨC</span>
-              <h2 className="text-3xl font-bold mb-3 text-[#111111]" style={OS}>Hình Thức</h2>
-              <p className="text-sm leading-relaxed text-[#111111]/80 mb-4" style={VN}>
-                Hình thức NNXHCN thể hiện qua chính thể, cấu trúc và chế độ chính trị. CHXHCN Việt Nam
-                có cấu trúc đơn nhất, chính thể cộng hòa XHCN và nền dân chủ XHCN.
-              </p>
-              <BulletRow items={[
-                "Chính thể: Cộng hòa xã hội chủ nghĩa",
-                "Cấu trúc: Nhà nước đơn nhất",
-                "Chế độ chính trị: Dân chủ XHCN",
-                "Cơ quan cao nhất: Quốc hội",
-              ]} />
-            </div>
-          </div>
-        </div>
-
-        {/* ── CHỨC NĂNG ── */}
-        <div>
-          <SectionHeader tag="1.3" title="Chức Năng của Nhà Nước XHCN" />
-          <div className="grid md:grid-cols-3 gap-4 mb-4">
-            {[
-              {
-                basis: "Theo phạm vi tác động",
-                items: ["Chức năng đối nội", "Chức năng đối ngoại"],
-                bg: "#D32F2F", tc: "#FFD700", bc: "white",
-              },
-              {
-                basis: "Theo lĩnh vực tác động",
-                items: ["Chức năng chính trị", "Chức năng kinh tế", "Chức năng văn hóa, xã hội"],
-                bg: "#111111", tc: "#FFD700", bc: "white",
-              },
-              {
-                basis: "Theo tính chất quyền lực",
-                items: ["Chức năng giai cấp: trấn áp", "Chức năng xã hội: tổ chức và xây dựng"],
-                bg: "#EDD9A3", tc: "#D32F2F", bc: "#111111",
-              },
-            ].map(({ basis, items, bg, tc, bc }) => (
-              <div key={basis} className="p-5 relative overflow-hidden" style={{ backgroundColor: bg }}>
-                <p className="text-xs font-bold tracking-[0.15em] mb-3 opacity-70" style={{ ...OS, color: tc }}>
-                  CĂN CỨ
+          <div className="p-6 min-h-[110px] bg-[#EDD9A3]/10 transition-all duration-300">
+            {activeReasonTab === "ly_luan" ? (
+              <div className="animate-fadeIn">
+                <p className="text-[#D32F2F] text-xs font-bold tracking-[0.2em] mb-2" style={OS}>TƯ DUY LÝ LUẬN CỐT LÕI</p>
+                <p className="text-sm text-[#111111]/90 leading-relaxed" style={VN}>
+                  Sản phẩm giúp người học làm rõ bản chất ưu việt của Nhà nước XHCN, mối quan hệ hữu cơ biện chứng giữa cơ cấu bộ máy nhà nước và quyền làm chủ tối cao của quần chúng nhân dân lao động trong tiến trình xây dựng chủ nghĩa xã hội.
                 </p>
-                <p className="text-xs mb-3 leading-snug" style={{ ...VN, color: tc }}>{basis}</p>
-                <ul className="space-y-1.5">
-                  {items.map(it => (
-                    <li key={it} className="flex items-start gap-1.5 text-xs" style={{ ...VN, color: bc }}>
-                      <span className="mt-0.5 flex-shrink-0" style={{ color: tc }}>▸</span>{it}
+              </div>
+            ) : (
+              <div className="animate-fadeIn">
+                <p className="text-[#D32F2F] text-xs font-bold tracking-[0.2em] mb-2" style={OS}>HÀNH ĐỘNG THỰC TIỄN XÃ HỘI</p>
+                <p className="text-sm text-[#111111]/90 leading-relaxed" style={VN}>
+                  Góp phần trực tiếp nâng cao nhận thức chính trị xã hội cho thế hệ trẻ; giúp tra cứu và tìm hiểu sâu sắc về Nhà nước pháp quyền XHCN Việt Nam, quyền và nghĩa vụ công dân, đẩy lùi thông tin sai lệch ngoài đời sống.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* ── THAO TÁC 2: SỰ RA ĐỜI (Sơ Đồ Chọn Nguyên Nhân & Hiển Thị Động) ── */}
+        <div id="su-ra-doi">
+          <SectionHeader tag="1.1" title="Sự Ra Đời của Nhà Nước XHCN" />
+          <div className="bg-[#D32F2F] text-white p-5 mb-4 relative overflow-hidden">
+            <p className="text-[#FFD700] text-xs font-bold tracking-[0.2em] mb-1" style={OS}>ĐỊNH NGHĨA CHÍNH THỐNG</p>
+            <p className="text-sm leading-relaxed text-white/95" style={VN}>
+              Nhà nước XHCN là kiểu nhà nước mà ở đó quyền lực hoàn toàn thuộc về giai cấp công nhân và nhân dân lao động; sinh ra từ thắng lợi của cuộc cách mạng xã hội chủ nghĩa nhằm thiết lập quyền làm chủ trên mọi lĩnh vực đời sống.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-12 gap-4">
+            {/* Thanh chọn yếu tố tác động bên trái */}
+            <div className="md:col-span-5 flex flex-col gap-2">
+              <span className="text-xs font-bold text-[#111111]/60 uppercase tracking-wider mb-1" style={OS}>Chọn nguồn gốc mâu thuẫn:</span>
+              {birthFactors.map((item, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveBirthFactor(index)}
+                  className={`w-full p-4 border-2 text-left font-bold text-xs uppercase tracking-wide transition-all duration-200 flex justify-between items-center ${
+                    activeBirthFactor === index
+                      ? "bg-[#111111] text-white border-[#111111] translate-x-1"
+                      : "bg-white text-[#111111] border-[#111111]/20 hover:border-[#111111]"
+                  }`}
+                  style={OS}
+                >
+                  <span>{index + 1}. Mâu thuẫn về {item.title}</span>
+                  <span>{activeBirthFactor === index ? "▶" : "▷"}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Khung hiển thị nội dung phân tích chi tiết bên phải */}
+            <div className="md:col-span-7 bg-[#EDD9A3] border-2 border-[#111111] p-6 flex flex-col justify-between shadow-[4px_4px_0px_0px_#111111]">
+              <div>
+                <p className="text-[#D32F2F] text-xs font-bold tracking-[0.15em] mb-2" style={OS}>LUẬN ĐIỂM NGHIÊN CỨU</p>
+                <p className="text-sm text-[#111111] leading-relaxed transition-opacity duration-300" style={VN}>
+                  {birthFactors[activeBirthFactor].detail}
+                </p>
+              </div>
+              <div className="mt-4 pt-4 border-t border-[#111111]/15 text-xs text-[#111111]/60 font-medium" style={VN}>
+                * Kết quả tất yếu: Mâu thuẫn đỉnh điểm thúc đẩy Cách mạng vô sản bùng nổ, thiết lập bộ máy kiểu mới.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ── THAO TÁC 3: BẢN CHẤT CỦA NNXHCN (Hệ Thống Tab Đồ Họa Phương Diện) ── */}
+        <div id="ban-chat">
+          <SectionHeader tag="1.2" title="Bản Chất Ba Phương Diện Của Nhà Nước XHCN" />
+          
+          <div className="flex border-b-2 border-[#111111] mb-4 bg-white/40 p-1">
+            {natureData.map((tab, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveNatureTab(idx)}
+                className={`flex-1 py-2 px-3 text-center font-bold text-xs uppercase tracking-wider transition-all ${
+                  activeNatureTab === idx
+                    ? "bg-[#D32F2F] text-white shadow-sm"
+                    : "text-[#111111]/60 hover:text-[#111111] hover:bg-white/50"
+                }`}
+                style={OS}
+              >
+                {tab.title}
+              </button>
+            ))}
+          </div>
+
+          <div className="bg-[#111111] text-white p-6 shadow-[4px_4px_0px_0px_#D32F2F]">
+            <p className="text-[#FFD700] text-xs font-bold tracking-[0.2em] mb-3" style={OS}>
+              {natureData[activeNatureTab].tag}
+            </p>
+            <ul className="space-y-3">
+              {natureData[activeNatureTab].points.map((pt, i) => (
+                <li key={i} className="flex items-start gap-3 text-sm animate-fadeIn" style={VN}>
+                  <span className="text-[#FFD700] font-bold mt-0.5">✔</span>
+                  <span className="text-white/90">{pt}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* ── THAO TÁC 4: CHỨC NĂNG VÀ ĐỐI CHIẾU TRẤN ÁP (Bộ Lọc Phân Loại & Đóng/Mở So Sánh) ── */}
+        <div id="cau-truc-chuc-nang">
+          <SectionHeader tag="1.3" title="Cấu Trúc Chức Năng & Điểm Khác Biệt Tuyệt Đối" />
+          
+          {/* Bộ lọc phân loại căn cứ chức năng */}
+          <div className="flex flex-wrap gap-2 mb-4">
+            {[
+              { id: "scope", label: "Căn cứ Phạm vi tác động" },
+              { id: "fields", label: "Căn cứ Lĩnh vực tác động" },
+              { id: "power", label: "Căn cứ Tính chất quyền lực" }
+            ].map((btn) => (
+              <button
+                key={btn.id}
+                onClick={() => setActiveFuncBasis(btn.id)}
+                className={`py-2 px-4 font-bold text-xs uppercase tracking-wide border-2 transition-all ${
+                  activeFuncBasis === btn.id
+                    ? "bg-[#111111] text-white border-[#111111]"
+                    : "bg-white text-[#111111] border-[#111111]/20 hover:border-[#111111]"
+                }`}
+                style={OS}
+              >
+                {btn.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Render danh sách chức năng tương ứng bộ lọc */}
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+            {functionData[activeFuncBasis].map((func, i) => (
+              <div key={i} className="bg-white border-2 border-[#111111] p-4 shadow-[2px_2px_0px_0px_#111111]">
+                <h4 className="font-bold text-xs text-[#D32F2F] uppercase mb-2" style={OS}>✦ {func.title}</h4>
+                <ul className="space-y-1">
+                  {func.items.map((it, idx) => (
+                    <li key={idx} className="text-xs text-[#111111]/80 flex items-center gap-1.5" style={VN}>
+                      <span className="text-gray-400">▪</span> {it}
                     </li>
                   ))}
                 </ul>
               </div>
             ))}
           </div>
-          {/* Điểm khác biệt */}
-          <div className="bg-white border-l-4 border-[#D32F2F] p-6">
-            <p className="text-[#D32F2F] text-xs font-bold tracking-[0.2em] mb-3" style={OS}>ĐIỂM KHÁC BIỆT CỦA NNXHCN</p>
-            <div className="grid md:grid-cols-2 gap-4 text-sm" style={VN}>
+
+          {/* Khung tương tác bật/tắt đối chiếu mô hình trấn áp */}
+          <div className="border-2 border-[#111111] bg-white overflow-hidden shadow-[4px_4px_0px_0px_#111111]">
+            <div className="bg-[#EDD9A3] px-6 py-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b-2 border-[#111111]">
               <div>
-                <p className="font-bold text-[#111111] mb-1" style={OS}>NHÀ NƯỚC BÓC LỘT</p>
-                <p className="text-[#111111]/70 text-xs leading-relaxed">
-                  Là công cụ của thiểu số thống trị đối với đa số nhân dân lao động.
-                  <strong className="text-[#D32F2F]"> Chức năng trấn áp giữ vai trò quan trọng</strong> nhằm duy trì địa vị giai cấp nắm quyền.
-                </p>
+                <p className="text-[#D32F2F] text-xs font-bold tracking-[0.2em]" style={OS}>BẢNG ĐỐI CHIẾU LUẬN ĐIỂM CHUYÊN CHÍNH</p>
+                <h3 className="text-sm font-bold text-[#111111] mt-0.5" style={OS}>Bản chất chức năng trấn áp có gì khác biệt?</h3>
               </div>
-              <div>
-                <p className="font-bold text-[#111111] mb-1" style={OS}>NHÀ NƯỚC XHCN</p>
-                <p className="text-[#111111]/70 text-xs leading-relaxed">
-                  Chức năng trấn áp vẫn tồn tại nhưng mang bản chất khác —
-                  <strong className="text-[#D32F2F]"> chức năng tổ chức và xây dựng là nội dung quan trọng nhất</strong>,
-                  tạo năng suất cao hơn, tổ chức lao động tốt hơn, mang lại đời sống tốt hơn cho nhân dân.
-                </p>
+              <div className="inline-flex bg-[#111111] p-1 border border-black rounded-sm">
+                <button 
+                  onClick={() => setCompareMode("bo_lot")}
+                  className={`px-3 py-1 text-[11px] font-bold uppercase transition-all ${compareMode === "bo_lot" ? "bg-[#D32F2F] text-white" : "text-white/50 hover:text-white"}`}
+                  style={OS}
+                >
+                  Mô hình Bóc lột cũ
+                </button>
+                <button 
+                  onClick={() => setCompareMode("xhcn")}
+                  className={`px-3 py-1 text-[11px] font-bold uppercase transition-all ${compareMode === "xhcn" ? "bg-[#D32F2F] text-white" : "text-white/50 hover:text-white"}`}
+                  style={OS}
+                >
+                  Mô hình XHCN kiểu mới
+                </button>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* ── NGUYÊN TẮC ── */}
-        <div className="bg-[#111111] text-white p-8 relative overflow-hidden">
-          <p className="text-[80px] font-bold leading-none opacity-10 absolute top-2 right-4 select-none" style={OS}>04</p>
-          <div className="relative">
-            <span className="inline-block text-xs font-bold tracking-[0.3em] border border-white/30 px-2 py-0.5 mb-3" style={OS}>NGUYÊN TẮC TỔ CHỨC</span>
-            <h2 className="text-3xl font-bold mb-5" style={OS}>Nguyên Tắc Tổ Chức và Hoạt Động</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {[
-                { n: "01", t: "Tập trung dân chủ", s: "Nguyên tắc nền tảng" },
-                { n: "02", t: "Đảng CS lãnh đạo", s: "Giữ vai trò chủ đạo" },
-                { n: "03", t: "Nhân dân tham gia", s: "Quản lý nhà nước" },
-                { n: "04", t: "Pháp chế XHCN", s: "Tôn trọng pháp luật" },
-              ].map(({ n, t, s }) => (
-                <div key={n} className="border border-white/15 p-4">
-                  <p className="text-[#D32F2F] text-2xl font-bold leading-none mb-2" style={OS}>{n}</p>
-                  <p className="text-white text-xs font-bold mb-1" style={OS}>{t}</p>
-                  <p className="text-white/50 text-xs" style={VN}>{s}</p>
-                </div>
-              ))}
+            <div className="p-5 min-h-[90px] bg-[#EDD9A3]/10">
+              {compareMode === "bo_lot" ? (
+                <p className="text-xs md:text-sm text-[#111111]/80 leading-relaxed animate-fadeIn" style={VN}>
+                   <strong>Nhà nước bóc lột cũ:</strong> Hoạt động như một công cụ chuyên chính của một <em>thiểu số giai cấp thống trị</em> dùng để áp bức, cưỡng chế và cấu xé quyền lợi của đại đa số quần chúng nhân dân lao động trong xã hội nhằm độc chiếm tư liệu sản xuất.
+                </p>
+              ) : (
+                <p className="text-xs md:text-sm text-[#111111]/80 leading-relaxed animate-fadeIn" style={VN}>
+                   <strong>Nhà nước XHCN kiểu mới:</strong> Thực hiện sự trấn áp của <em>đại đa số nhân dân lao động</em> chống lại thiểu số bóc lột cũ đã bị lật đổ cùng các phần tử phản động phá hoại; lấy nhiệm vụ <strong>tổ chức và xây dựng kinh tế - xã hội làm nội dung cốt lõi và tối thượng</strong> (Theo luận điểm V.I. Lênin).
+                </p>
+              )}
             </div>
           </div>
         </div>
 
-        {/* ── DÂN CHỦ XHCN ── */}
-        <div>
-          <SectionHeader tag="2.1" title="Dân Chủ XHCN — Cơ Sở và Nền Tảng" />
-          <div className="bg-[#D32F2F] text-white p-6 mb-4">
-            <p className="text-sm leading-relaxed text-white/90" style={VN}>
-              Dân chủ xã hội chủ nghĩa là <strong>cơ sở và nền tảng của nhà nước XHCN</strong> — chỉ trong điều kiện đó
-              người dân mới có đầy đủ khả năng thực hiện ý chí của mình thông qua việc lựa chọn một cách công bằng,
-              bình đẳng những người đại diện cho quyền lực chính đáng vào bộ máy nhà nước.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="bg-white border-2 border-[#111111] p-5">
-              <p className="text-[#D32F2F] text-xs font-bold tracking-[0.2em] mb-3" style={OS}>VAI TRÒ CỦA DÂN CHỦ XHCN</p>
-              <BulletRow items={[
-                "Nhân dân tham gia trực tiếp hoặc gián tiếp vào quản lý nhà nước",
-                "Khai thác và phát huy sức mạnh, trí tuệ của nhân dân",
-                "Kiểm soát hiệu quả quyền lực nhà nước",
-                "Ngăn chặn sự tha hóa quyền lực",
-              ]} />
-            </div>
-            <div className="bg-[#EDD9A3] border-2 border-[#111111] p-5">
-              <p className="text-[#D32F2F] text-xs font-bold tracking-[0.2em] mb-3" style={OS}>HẬU QUẢ NẾU VI PHẠM</p>
-              <p className="text-sm text-[#111111]/80 leading-relaxed" style={VN}>
-                Nếu các nguyên tắc của nền dân chủ XHCN bị vi phạm thì việc xây dựng nhà nước XHCN
-                sẽ không đạt được mục tiêu đề ra — quyền lực của nhân dân có thể bị chuyển thành
-                quyền lực phục vụ lợi ích của một nhóm người.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* ── NHÀ NƯỚC LÀ CÔNG CỤ THỰC THI DÂN CHỦ ── */}
-        <div>
-          <SectionHeader tag="2.2" title="Nhà Nước — Công Cụ Thực Thi Quyền Làm Chủ" />
-          <div className="grid md:grid-cols-2 gap-4">
+        {/* ── THAO TÁC 5: MỐI QUAN HỆ BIỆN CHỨNG (Interactive Workflow) ── */}
+        <div id="co-so-dan-chu">
+          <SectionHeader tag="2.1" title="Dân Chủ XHCN — Cơ Sơ và Nền Tảng Biện Chứng" />
+          
+          <div className="grid md:grid-cols-3 gap-3 mb-4">
             {[
-              {
-                n: "1", title: "Thể Chế Hóa Ý Chí Nhân Dân",
-                body: "Nhà nước cụ thể hóa ý chí, nguyện vọng và quyền lực của nhân dân thành các văn bản pháp luật, chính sách và hành lang pháp lý. Quyền làm chủ không chỉ là tuyên bố mà được đảm bảo bằng quy định pháp luật cụ thể.",
-                bg: "#D32F2F", tc: "#FFD700", bc: "white",
-              },
-              {
-                n: "2", title: "Xác Lập Quyền và Trách Nhiệm",
-                body: "Thông qua pháp luật, Nhà nước phân định rõ quyền hạn và trách nhiệm của mỗi công dân — giúp người dân hiểu phạm vi quyền làm chủ và tham gia quản lý xã hội một cách chủ động.",
-                bg: "#111111", tc: "#FFD700", bc: "white",
-              },
-              {
-                n: "3", title: "Công Cụ Bảo Vệ Quyền Làm Chủ",
-                body: "Nhà nước sử dụng quyền lực để ngăn chặn và trừng trị các hành vi xâm phạm quyền lợi chính đáng của người dân; bảo vệ nền dân chủ XHCN trước các thế lực thù địch và phần tử đi ngược lợi ích nhân dân.",
-                bg: "#EDD9A3", tc: "#D32F2F", bc: "#111111",
-              },
-              {
-                n: "4", title: "Phương Thức Thực Hiện Dân Chủ",
-                body: "Tạo điều kiện để nhân dân tham gia quản lý nhà nước và xã hội. Tổ chức đời sống xã hội, phát triển kinh tế, văn hóa phục vụ nhân dân. Thực hiện phương châm: \"Dân biết, dân bàn, dân làm, dân kiểm tra\".",
-                bg: "#FFFFFF", tc: "#D32F2F", bc: "#111111",
-              },
-            ].map(({ n, title, body, bg, tc, bc }) => (
-              <div key={n} className="p-6 relative overflow-hidden border border-[#111111]/10"
-                style={{ backgroundColor: bg }}>
-                <p className="text-[64px] font-bold leading-none opacity-10 absolute right-3 top-0 select-none"
-                  style={{ ...OS, color: tc }}>{n}</p>
-                <p className="text-xs font-bold tracking-[0.2em] mb-2 relative z-10" style={{ ...OS, color: tc }}>
-                  VAI TRÒ {n}
-                </p>
-                <h3 className="text-lg font-bold mb-3 leading-tight relative z-10" style={{ ...OS, color: bc }}>
-                  {title}
-                </h3>
-                <p className="text-xs leading-relaxed relative z-10 opacity-80" style={{ ...VN, color: bc }}>
-                  {body}
-                </p>
+              { id: 0, title: "1. Cơ sở nền tảng", desc: "Tạo điều kiện để người dân bầu cử người đại diện quyền lực hợp pháp." },
+              { id: 1, title: "2. Phát huy sức mạnh", desc: "Khai thác trí tuệ tập thể và thiết lập cơ chế kiểm soát quyền lực." },
+              { id: 2, title: "3. Hậu quả sai phạm", desc: "Nếu vi phạm dân chủ, quyền lực sẽ biến tướng thành lợi ích nhóm." }
+            ].map((step) => (
+              <div
+                key={step.id}
+                onClick={() => setActiveRelationStep(step.id)}
+                className={`p-4 border-2 cursor-pointer transition-all duration-200 ${
+                  activeRelationStep === step.id
+                    ? "bg-[#D32F2F] text-white border-[#D32F2F] shadow-[3px_3px_0px_0px_#111111]"
+                    : "bg-white text-[#111111] border-[#111111]/15 hover:border-[#111111]"
+                }`}
+              >
+                <h4 className="font-bold text-xs uppercase mb-1" style={OS}>{step.title}</h4>
+                <p className="text-[11px] opacity-80" style={VN}>{step.desc}</p>
               </div>
             ))}
           </div>
-          <div className="bg-[#111111] text-white px-6 py-4 mt-1">
-            <p className="text-sm text-center" style={VN}>
+
+          <div className="bg-[#111111] text-white p-5 border-l-4 border-[#FFD700]">
+            <p className="text-[#FFD700] text-xs font-bold tracking-wider mb-1" style={OS}>HỆ QUẢ LUẬN CHỨNG CHI TIẾT:</p>
+            {activeRelationStep === 0 && (
+              <p className="text-xs md:text-sm text-white/85 leading-relaxed animate-fadeIn" style={VN}>
+                Dân chủ xã hội chủ nghĩa đảm bảo tính chính danh của bộ máy nhà nước. Chỉ khi nhân dân được thực hiện quyền lực chính trị một cách tự do, bình đẳng, các cơ quan công quyền mới thực sự đại diện cho ý chí cốt lõi của toàn xã hội.
+              </p>
+            )}
+            {activeRelationStep === 1 && (
+              <p className="text-xs md:text-sm text-white/85 leading-relaxed animate-fadeIn" style={VN}>
+                Nền dân chủ tạo hành lang thông thoáng để nhân dân trực tiếp tham gia đóng góp giải pháp vĩ mô, đồng thời thực thi vai trò giám sát, ngăn chặn kịp thời các mầm mống tha hóa, quan liêu, hách dịch của cán bộ công quyền.
+              </p>
+            )}
+            {activeRelationStep === 2 && (
+              <p className="text-xs md:text-sm text-red-300 font-medium leading-relaxed animate-fadeIn" style={VN}>
+                Cảnh báo lý luận: Bất kỳ hành vi buông lỏng hay chà đạp lên các nguyên tắc dân chủ nào cũng sẽ làm suy yếu bản chất nhà nước, biến công cụ của nhân dân thành phương tiện đặc quyền phục vụ lợi ích cục bộ của thiểu số phe nhóm.
+              </p>
+            )}
+          </div>
+        </div>
+
+        {/* ── THAO TÁC 6: NHÀ NƯỚC LÀ CÔNG CỤ (Khung Chọn Tính Năng Hiện Thực Hóa) ── */}
+        <div id="cong-cu-thuc-thi">
+          <SectionHeader tag="2.2" title="Nhà Nước — Công Cụ Thực Thi Quyền Làm Chủ" />
+          
+          <div className="grid md:grid-cols-12 gap-4">
+            {/* Cột chọn vai trò bên trái */}
+            <div className="md:col-span-4 flex flex-col gap-2">
+              {toolCards.map((card, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveToolCard(idx)}
+                  className={`w-full p-3 border-2 text-left font-bold text-xs uppercase tracking-wide transition-all ${
+                    activeToolCard === idx
+                      ? "bg-[#111111] text-white border-[#111111] translate-x-1"
+                      : "bg-white text-[#111111] border-[#111111]/20 hover:border-[#111111]"
+                  }`}
+                  style={OS}
+                >
+                  Vai Trò {idx + 1}: {card.title.split(" ")[0]}...
+                </button>
+              ))}
+            </div>
+
+            {/* Màn hình hiển thị nội dung bên phải */}
+            <div className="md:col-span-8 bg-white border-2 border-[#111111] p-6 shadow-[4px_4px_0px_0px_#111111] flex flex-col justify-between min-h-[180px]">
+              <div>
+                <p className="text-[#D32F2F] text-xs font-bold tracking-[0.2em] mb-1" style={OS}>VA TRÒ THỰC THI {activeToolCard + 1}</p>
+                <h3 className="text-base font-bold text-[#111111] mb-2" style={OS}>{toolCards[activeToolCard].title}</h3>
+                <p className="text-xs md:text-sm text-[#111111]/80 leading-relaxed animate-fadeIn" style={VN}>
+                  {toolCards[activeToolCard].body}
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-dashed border-[#111111]/20 text-center text-xs text-[#D32F2F] font-bold tracking-wide" style={OS}>
+                "DÂN BIẾT — DÂN BÀN — DÂN LÀM — DÂN KIỂM TRA"
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-[#111111] text-white px-6 py-4 mt-4">
+            <p className="text-xs md:text-sm text-center leading-relaxed" style={VN}>
               <span className="text-[#FFD700] font-bold" style={OS}>TÓM LẠI: </span>
-              Nhà nước XHCN không đứng trên nhân dân mà là công cụ do nhân dân tạo ra.
-              Quyền làm chủ được hiện thực hóa thông qua việc Nhà nước xây dựng pháp luật,
-              tổ chức thực thi và bảo vệ các quyền lợi chính đáng đó.
+              Nhà nước XHCN không đứng trên nhân dân mà là công cụ hành pháp do nhân dân tạo dựng. Quyền làm chủ tối cao được hiện thực hóa toàn diện thông qua việc Nhà nước xây dựng pháp luật, tổ chức thực thi và bảo vệ các quyền lợi chính đáng đó.
             </p>
           </div>
         </div>
 
         {/* ── QUOTE ── */}
-        <div className="bg-[#111111] text-white p-10 relative overflow-hidden">
+        <div className="bg-[#111111] text-white p-10 relative overflow-hidden shadow-lg">
           <div className="absolute top-0 left-0 w-2 h-full bg-[#D32F2F]" />
           <div className="absolute top-4 left-8 text-[80px] font-bold text-[#D32F2F] leading-none opacity-30 select-none" style={OS}>"</div>
           <p className="text-lg md:text-xl italic leading-relaxed mb-4 relative z-10 max-w-2xl" style={VN}>
@@ -776,19 +821,14 @@ function HomePage() {
 }
 
 // ─── PUZZLE GAME ─────────────────────────────────────────────────────────────
+// Đồ họa cục bộ
 import img1 from '../public/images/logo.png';
 import img2 from '../public/images/logo1.jpg';
 import img3 from '../public/images/logo2.png';
 import img4 from '../public/images/logo3.jpg';
 import img5 from '../public/images/logo4.jpg';
 
-const LEVEL_IMAGES = [
-  img1,
-  img2,
-  img3,
-  img4,
-  img5,
-];
+const LEVEL_IMAGES = [img1, img2, img3, img4, img5];
 
 const LEVEL_CFG = [
   { g: 3, base: 100, startMoves: 5, maxQ: 5, mvRight: 4, mvWrong: 1, hintP: 15 },
@@ -798,17 +838,8 @@ const LEVEL_CFG = [
   { g: 5, base: 380, startMoves: 8, maxQ: 6, mvRight: 8, mvWrong: 3, hintP: 25 },
 ];
 
-interface LBEntry { id: string; name: string; score: number; level: number; }
-
-const INIT_LB: LBEntry[] = [
-  { id: "1", name: "Nguyễn Thành Công", score: 1540, level: 5 },
-  { id: "2", name: "Trần Minh Hiếu",    score: 1280, level: 5 },
-  { id: "3", name: "Lê Thị Thu Hà",     score:  970, level: 4 },
-  { id: "4", name: "Phạm Quốc Bảo",     score:  820, level: 4 },
-  { id: "5", name: "Vũ Hoài Nam",        score:  650, level: 3 },
-  { id: "6", name: "Đặng Thúy Anh",     score:  520, level: 3 },
-  { id: "7", name: "Hoàng Văn Đức",      score:  390, level: 2 },
-];
+// Cấu trúc Interface khớp với MongoDB _id
+interface LBEntry { _id: string; name: string; score: number; level: number; }
 
 function initPieces(count: number): number[] {
   let arr = Array.from({ length: count }, (_, i) => i);
@@ -819,15 +850,16 @@ function initPieces(count: number): number[] {
 type GamePhase = "start" | "puzzle" | "win" | "gameover";
 
 function PuzzlePage() {
-  // ── Leaderboard
-  const [lb, setLb] = useState<LBEntry[]>(INIT_LB);
+  // ── Leaderboard States
+  const [lb, setLb] = useState<LBEntry[]>([]);
   const [showLb, setShowLb] = useState(false);
   const [lbName, setLbName] = useState("");
   const [lbScore, setLbScore] = useState("");
 
-  // ── Game state
+  // ── Game States
   const [phase, setPhase] = useState<GamePhase>("start");
   const [pName, setPName] = useState("");
+  const [nameError, setNameError] = useState(""); 
   const [level, setLevel] = useState(1);
   const [score, setScore] = useState(0);
   const [lvlScore, setLvlScore] = useState(0);
@@ -850,24 +882,37 @@ function PuzzlePage() {
   const curQ = qPool[qIdx] != null ? QUIZ[qPool[qIdx]] : null;
   const estScore = Math.max(Math.round(cfg.base * 0.25), cfg.base - movesUsed * 2 + qCorrect * 8 - hintCost);
 
-  // Detect solve
+  // 1. Tự động tải bảng xếp hạng từ DB khi mở game
+  useEffect(() => {
+    fetch("http://localhost:5000/api/leaderboard")
+      .then(res => res.json())
+      .then(data => setLb(data))
+      .catch(err => console.error("Lỗi tải BXH:", err));
+  }, []);
+
+  // 2. Lưu điểm tự động lên MongoDB khi hoàn thành màn chơi (Solve)
   useEffect(() => {
     if (phase !== "puzzle" || pieces.length === 0) return;
     if (!pieces.every((v, i) => v === i)) return;
+
     const earned = Math.max(Math.round(cfg.base * 0.25), cfg.base - movesUsed * 2 + qCorrect * 8 - hintCost);
     const ns = score + earned;
     setLvlScore(earned);
     setScore(ns);
-    setLb(prev => {
-      const has = prev.find(e => e.name === pName);
-      const next = has
-        ? prev.map(e => e.name === pName ? { ...e, score: Math.max(e.score, ns), level: Math.max(e.level, level) } : e)
-        : [...prev, { id: String(Date.now()), name: pName, score: ns, level }];
-      return [...next].sort((a, b) => b.score - a.score);
-    });
+
+    fetch("http://localhost:5000/api/leaderboard/save-game", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: pName, score: ns, level: level })
+    })
+      .then(res => res.json())
+      .then(data => setLb(data))
+      .catch(err => console.error("Lỗi đồng bộ kết quả thắng cuộc:", err));
+
     setPhase("win");
   }, [pieces]);
 
+  // ─── GAMEPLAY HANDLERS ─────────────────────────────────────────────────────
   function startLevel(lvl: number) {
     const c = LEVEL_CFG[lvl - 1];
     setLevel(lvl);
@@ -880,11 +925,26 @@ function PuzzlePage() {
     setPhase("puzzle");
   }
 
-  function handleStart() {
-    if (!pName.trim()) return;
-    setScore(0);
-    startLevel(1);
+function handleStart() {
+  const trimmedName = pName.trim();
+  if (!trimmedName) {
+    setNameError("Vui lòng nhập tên trước khi bắt đầu!");
+    return;
   }
+
+  const isNameTaken = lb.some(
+    (entry) => entry.name.toLowerCase() === trimmedName.toLowerCase()
+  );
+
+  if (isNameTaken) {
+    setNameError(`Tên "${trimmedName}" đã có người sử dụng!`);
+    return;
+  }
+
+  setNameError(""); 
+  setScore(0);
+  startLevel(1);
+}
 
   function handlePieceClick(pos: number) {
     if (phase !== "puzzle" || showQA) return;
@@ -923,68 +983,35 @@ function PuzzlePage() {
     else startLevel(level + 1);
   }
 
-  // LB helpers
-  const lbDelta = (id: string, d: number) =>
-    setLb(p => [...p.map(e => e.id === id ? { ...e, score: Math.max(0, e.score + d) } : e)].sort((a, b) => b.score - a.score));
-  const lbDel = (id: string) => setLb(p => p.filter(e => e.id !== id));
-  function lbAdd() {
-    if (!lbName.trim()) return;
-    setLb(p => [...p, { id: String(Date.now()), name: lbName.trim(), score: parseInt(lbScore) || 0, level: 1 }].sort((a, b) => b.score - a.score));
-    setLbName(""); setLbScore("");
-  }
-
   const medal = (i: number) => i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : `${i + 1}`;
-  const playerRank = lb.findIndex(e => e.name === pName);
+  const playerRank = lb.findIndex(e => e.name.toLowerCase() === pName.trim().toLowerCase());
 
-  // ── Leaderboard drawer ──────────────────────────────────────────────────
+  // ─── LEADERBOARD DRAWER ────────────────────────────────────────────────────
   const lbDrawer = showLb && (
     <div className="fixed inset-0 z-50 bg-black/50 flex items-start justify-end" onClick={() => setShowLb(false)}>
       <div className="bg-white w-full max-w-sm h-full overflow-y-auto shadow-2xl flex flex-col" onClick={e => e.stopPropagation()}>
-        <div className="bg-[#111111] px-4 py-3 flex items-center justify-between sticky top-0 z-10">
-          <span className="text-white font-bold text-sm tracking-wide" style={OS}>🏆 BẢNG XẾP HẠNG</span>
+        <div className="bg-[#111111] px-4 py-4 flex items-center justify-between sticky top-0 z-10">
+          <span className="text-white font-bold text-sm tracking-wide" style={OS}>🏆 BẢNG XẾP HẠNG TOÀN CẦU</span>
           <button onClick={() => setShowLb(false)} className="text-white/60 hover:text-white text-xl leading-none">×</button>
         </div>
         <div className="flex-1 divide-y divide-[#F5E9D0]">
           {lb.map((e, i) => (
-            <div key={e.id} className={`px-3 pt-2 pb-2 ${i < 3 ? "bg-[#FFFBF0]" : "bg-white"} ${e.name === pName ? "ring-2 ring-inset ring-[#D32F2F]" : ""}`}>
-              <div className="flex items-center gap-2 mb-1.5">
-                <span className="w-7 text-center text-sm flex-shrink-0">{medal(i)}</span>
-                <span className="flex-1 text-sm font-medium truncate" style={VN}>{e.name}</span>
-                <span className="font-bold text-[#D32F2F] tabular-nums text-sm" style={OS}>{e.score}</span>
-                <span className="text-[10px] bg-[#F5E9D0] text-[#111111]/50 px-1.5 py-0.5 flex-shrink-0" style={OS}>L{e.level}</span>
-              </div>
-              <div className="flex gap-1 pl-7">
-                {([10, 50] as const).map(d => (
-                  <button key={d} onClick={() => lbDelta(e.id, d)}
-                    className="text-[10px] font-bold bg-green-100 text-green-700 hover:bg-green-200 px-2 py-0.5" style={OS}>+{d}</button>
-                ))}
-                {([10, 50] as const).map(d => (
-                  <button key={d} onClick={() => lbDelta(e.id, -d)}
-                    className="text-[10px] font-bold bg-red-100 text-red-600 hover:bg-red-200 px-2 py-0.5" style={OS}>−{d}</button>
-                ))}
-                <button onClick={() => lbDel(e.id)}
-                  className="text-[10px] font-bold bg-[#111111] text-white hover:bg-red-800 px-2 py-0.5 ml-auto" style={OS}>✕</button>
-              </div>
+            <div key={e._id} className={`px-4 py-3.5 flex items-center gap-3 ${i < 3 ? "bg-[#FFFBF0]" : "bg-white"} ${e.name.toLowerCase() === pName.trim().toLowerCase() ? "ring-2 ring-inset ring-[#D32F2F]" : ""}`}>
+              <span className="w-7 text-center text-sm flex-shrink-0">{medal(i)}</span>
+              <span className="flex-1 text-sm font-medium truncate" style={VN}>{e.name}</span>
+              <span className="font-bold text-[#D32F2F] tabular-nums text-sm" style={OS}>{e.score}</span>
+              <span className="text-[10px] bg-[#F5E9D0] text-[#111111]/50 px-1.5 py-0.5 flex-shrink-0" style={OS}>L{e.level}</span>
             </div>
           ))}
-        </div>
-        <div className="border-t-2 border-[#111111] p-4 bg-[#F5E9D0] sticky bottom-0">
-          <p className="text-[#D32F2F] text-xs font-bold tracking-[0.2em] mb-2" style={OS}>THÊM NGƯỜI CHƠI</p>
-          <div className="flex gap-2 mb-2">
-            <input value={lbName} onChange={e => setLbName(e.target.value)} placeholder="Tên..."
-              className="flex-1 border-2 border-[#111111] bg-white px-2 py-1.5 text-xs outline-none" style={VN} />
-            <input value={lbScore} onChange={e => setLbScore(e.target.value)} placeholder="Điểm" type="number"
-              className="w-20 border-2 border-[#111111] bg-white px-2 py-1.5 text-xs outline-none" style={VN} />
-          </div>
-          <button onClick={lbAdd} className="w-full bg-[#D32F2F] text-white py-2 text-xs font-bold hover:bg-[#B71C1C]" style={OS}>
-            + THÊM VÀO BẢNG
-          </button>
+          {lb.length === 0 && (
+            <div className="text-center py-8 text-xs text-[#111111]/40" style={VN}>Chưa có người chơi nào được ghi nhận.</div>
+          )}
         </div>
       </div>
     </div>
   );
 
-  // ── START ──────────────────────────────────────────────────────────────
+// ─── SCREEN: START ─────────────────────────────────────────────────────────
   if (phase === "start") return (
     <div className="pt-16 min-h-screen bg-[#F5E9D0] flex flex-col">
       {lbDrawer}
@@ -1000,9 +1027,10 @@ function PuzzlePage() {
         <div className="lg:w-72 flex-shrink-0 space-y-4">
           <div className="bg-white border-2 border-[#111111] p-6">
             <p className="text-[#D32F2F] text-xs font-bold tracking-[0.2em] mb-4" style={OS}>BẮT ĐẦU GAME</p>
-            <input value={pName} onChange={e => setPName(e.target.value)}
+            <input value={pName} onChange={e => {setPName(e.target.value); setNameError("")}}
               onKeyDown={e => e.key === "Enter" && handleStart()} placeholder="Nhập tên của bạn..."
               className="w-full border-2 border-[#111111] bg-[#F5E9D0] px-3 py-2.5 text-sm mb-4 outline-none focus:border-[#D32F2F]" style={VN} />
+              {nameError && (<p className="text-red-600 text-xs font-semibold mb-3 animate-pulse" style={VN}>{nameError}</p>)}
             <button onClick={handleStart} disabled={!pName.trim()}
               className="w-full bg-[#D32F2F] text-white py-3 font-bold text-sm disabled:opacity-40 hover:bg-[#B71C1C] flex items-center justify-center gap-2" style={OS}>
               BẮT ĐẦU <ChevronRight className="w-4 h-4" />
@@ -1032,11 +1060,11 @@ function PuzzlePage() {
         <div className="flex-1">
           <div className="flex items-center justify-between mb-3">
             <p className="text-[#D32F2F] text-xs font-bold tracking-[0.2em]" style={OS}>🏆 BẢNG XẾP HẠNG HIỆN TẠI</p>
-            <button onClick={() => setShowLb(true)} className="text-xs text-[#111111]/50 hover:text-[#D32F2F] font-semibold underline" style={VN}>Quản lý →</button>
+            <button onClick={() => setShowLb(true)} className="text-xs text-[#111111]/50 hover:text-[#D32F2F] font-semibold underline" style={VN}>Xem tất cả →</button>
           </div>
           <div className="bg-white border-2 border-[#111111] divide-y divide-[#F5E9D0]">
             {lb.slice(0, 8).map((e, i) => (
-              <div key={e.id} className={`flex items-center gap-3 px-4 py-2.5 ${i < 3 ? "bg-[#FFFBF0]" : ""}`}>
+              <div key={e._id} className={`flex items-center gap-3 px-4 py-2.5 ${i < 3 ? "bg-[#FFFBF0]" : ""}`}>
                 <span className="text-base w-8 text-center flex-shrink-0">{medal(i)}</span>
                 <span className="flex-1 text-sm font-medium truncate" style={VN}>{e.name}</span>
                 <span className="font-bold text-[#D32F2F] tabular-nums" style={OS}>{e.score}</span>
@@ -1048,8 +1076,8 @@ function PuzzlePage() {
       </div>
     </div>
   );
-
-  // ── PUZZLE ─────────────────────────────────────────────────────────────
+  
+  // ─── SCREEN: PUZZLE PLAYING ────────────────────────────────────────────────
   if (phase === "puzzle") return (
     <div className="pt-16 min-h-screen bg-[#F5E9D0] flex flex-col">
       {lbDrawer}
@@ -1071,7 +1099,6 @@ function PuzzlePage() {
       </div>
 
       <div className="flex-1 max-w-5xl mx-auto w-full px-4 py-6 flex flex-col lg:flex-row gap-6">
-        {/* Puzzle + QA overlay */}
         <div className="flex-shrink-0 relative">
           <div className="border-4 border-[#111111] shadow-2xl overflow-hidden relative"
             style={{ display: "grid", gridTemplateColumns: `repeat(${gridSize}, ${450 / gridSize}px)` }}>
@@ -1080,9 +1107,8 @@ function PuzzlePage() {
                 isSelected={sel === pos} isSolved={false} onClick={() => handlePieceClick(pos)}
                 imageUrl={LEVEL_IMAGES[level - 1] || LEVEL_IMAGES[0]} />
             ))}
-            {/* Q&A overlay */}
             {showQA && curQ && (
-              <div className="absolute inset-0 bg-black/82 flex items-center justify-center p-4 z-20">
+              <div className="absolute inset-0 bg-black/80 flex items-center justify-center p-4 z-20">
                 <div className="bg-white border-2 border-[#111111] w-full max-w-xs">
                   <div className="bg-[#D32F2F] px-4 py-3">
                     <p className="text-white text-xs font-bold tracking-wider" style={OS}>CÂU {qIdx + 1}/{cfg.maxQ} — NHẬN LƯỢT ĐI</p>
@@ -1110,18 +1136,8 @@ function PuzzlePage() {
               </div>
             )}
           </div>
-          {gridSize === 3 && (
-            <div className="mt-2 grid grid-cols-3 gap-0.5">
-              {COMP_LABELS.map((c, i) => (
-                <div key={i} className="bg-[#111111] text-center py-1 px-1">
-                  <p className="text-[#FFD700] text-[9px] font-bold leading-tight" style={OS}>{c.name}</p>
-                </div>
-              ))}
-            </div>
-          )}
         </div>
 
-        {/* Controls */}
         <div className="flex flex-col gap-3 w-full lg:w-56">
           <div className="bg-[#D32F2F] text-white p-4 text-center">
             <p className="text-xs opacity-70 mb-0.5" style={VN}>Điểm hiện tại</p>
@@ -1130,40 +1146,41 @@ function PuzzlePage() {
           <button onClick={() => qsLeft > 0 ? setShowQA(true) : setMoves(m => m + 3)}
             className={`flex items-center justify-center gap-2 py-3 font-bold text-xs border-2 border-[#111111] transition-all ${moves <= 2 ? "bg-[#D32F2F] text-white border-[#D32F2F]" : "bg-white text-[#111111] hover:bg-[#F5E9D0]"}`}
             style={OS}>
-            {moves <= 2 ? "⚠ " : ""}
-            {qsLeft > 0 ? `KIẾM LƯỢT (+${cfg.mvRight}/${cfg.mvWrong})` : "CẤP CỨU +3 LƯỢT"}
+            {moves <= 2 ? "⚠ " : ""} {qsLeft > 0 ? `KIẾM LƯỢT (+${cfg.mvRight}/${cfg.mvWrong})` : "CẤP CỨU +3 LƯỢT"}
           </button>
           <button onClick={handleHint}
             className={`flex items-center justify-center gap-2 py-3 font-bold text-xs border-2 transition-all ${showHint ? "bg-[#EDD9A3] border-[#D32F2F] text-[#D32F2F]" : "bg-white border-[#111111] text-[#111111] hover:bg-[#F5E9D0]"}`}
             style={OS}>
-            {showHint ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
             {showHint ? "ẨN GỢI Ý" : `GỢI Ý (−${cfg.hintP}đ)`}
           </button>
           <button onClick={() => { setPieces(initPieces(gridSize * gridSize)); setSel(null); }}
             className="flex items-center justify-center gap-2 bg-[#111111] text-white py-3 font-bold text-xs hover:bg-black" style={OS}>
             <RotateCcw className="w-3.5 h-3.5" /> ĐẶT LẠI HÌNH
           </button>
-          {/* Live stats */}
           <div className="bg-white border-2 border-[#111111] p-3 space-y-1.5 text-xs">
-            {([
-              ["Lượt đã dùng:", `${movesUsed}`, "#111111"],
-              ["Trả lời đúng:", `${qCorrect}/${qIdx}`, "#16a34a"],
-              ...(hintCost > 0 ? [["Phí gợi ý:", `−${hintCost}đ`, "#dc2626"]] : []),
-            ] as [string, string, string][]).map(([l, v, c]) => (
-              <div key={l} className="flex justify-between">
-                <span className="text-[#111111]/60" style={VN}>{l}</span>
-                <span className="font-bold" style={{ ...OS, color: c }}>{v}</span>
+            <div className="flex justify-between">
+              <span className="text-[#111111]/60" style={VN}>Lượt đã dùng:</span>
+              <span className="font-bold" style={OS}>{movesUsed}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-[#111111]/60" style={VN}>Trả lời đúng:</span>
+              <span className="font-bold text-green-600" style={OS}>{qCorrect}/{qIdx}</span>
+            </div>
+            {hintCost > 0 && (
+              <div className="flex justify-between">
+                <span className="text-[#111111]/60" style={VN}>Phí gợi ý:</span>
+                <span className="font-bold text-red-600" style={OS}>−{hintCost}đ</span>
               </div>
-            ))}
+            )}
             <div className="border-t border-[#EDD9A3] pt-1.5 flex justify-between">
               <span className="text-[#111111]/60" style={VN}>Điểm dự kiến:</span>
               <span className="font-bold text-[#D32F2F]" style={OS}>{estScore}</span>
             </div>
           </div>
           {showHint && (
-            <div className="border-2 border-[#D32F2F] overflow-hidden">
-              <svg viewBox="0 0 450 450" width="208" height="208" className="block"><EmblemContent /></svg>
-              <p className="bg-[#D32F2F] text-white text-center py-1 text-[9px] font-bold" style={OS}>GỢI Ý — ĐÃ TRỪ {cfg.hintP} ĐIỂM</p>
+            <div className="border-2 border-[#D32F2F] overflow-hidden bg-white p-2">
+              <img src={LEVEL_IMAGES[level - 1] || LEVEL_IMAGES[0]} alt="Gợi ý" className="w-[208px] h-[208px] object-cover mx-auto" />
+              <p className="bg-[#D32F2F] text-white text-center py-1 text-[9px] font-bold mt-2" style={OS}>GỢI Ý — ĐÃ TRỪ {cfg.hintP} ĐIỂM</p>
             </div>
           )}
         </div>
@@ -1171,7 +1188,7 @@ function PuzzlePage() {
     </div>
   );
 
-  // ── WIN ────────────────────────────────────────────────────────────────
+  // ─── SCREEN: WIN LEVEL ─────────────────────────────────────────────────────
   if (phase === "win") return (
     <div className="pt-16 min-h-screen bg-[#F5E9D0] flex flex-col">
       {lbDrawer}
@@ -1188,17 +1205,24 @@ function PuzzlePage() {
             <p className="text-6xl font-bold leading-none mt-1" style={OS}>+{lvlScore}</p>
           </div>
           <div className="p-5 space-y-2 border-b-2 border-[#EDD9A3] text-sm">
-            {([
-              [`Điểm cơ bản:`, `+${cfg.base}`, "#D32F2F"],
-              [`Lượt đã dùng (${movesUsed} × −2):`, `−${movesUsed * 2}`, "#555"],
-              [`Trả lời đúng (${qCorrect} × +8):`, `+${qCorrect * 8}`, "#16a34a"],
-              ...(hintCost > 0 ? [[`Phí gợi ý:`, `−${hintCost}`, "#dc2626"]] : []),
-            ] as [string, string, string][]).map(([lbl, val, clr]) => (
-              <div key={lbl} className="flex justify-between">
-                <span style={VN} className="text-[#111111]/70">{lbl}</span>
-                <span className="font-bold" style={{ ...OS, color: clr }}>{val}</span>
+            <div className="flex justify-between">
+              <span style={VN} className="text-[#111111]/70">Điểm cơ bản:</span>
+              <span className="font-bold text-[#D32F2F]" style={OS}>+{cfg.base}</span>
+            </div>
+            <div className="flex justify-between">
+              <span style={VN} className="text-[#111111]/70">Lượt sử dụng ({movesUsed} × −2):</span>
+              <span className="font-bold text-gray-600" style={OS}>−{movesUsed * 2}</span>
+            </div>
+            <div className="flex justify-between">
+              <span style={VN} className="text-[#111111]/70">Trả lời đúng ({qCorrect} × +8):</span>
+              <span className="font-bold text-green-600" style={OS}>+{qCorrect * 8}</span>
+            </div>
+            {hintCost > 0 && (
+              <div className="flex justify-between">
+                <span style={VN} className="text-[#111111]/70">Phí gợi ý:</span>
+                <span className="font-bold text-red-600" style={OS}>−{hintCost}</span>
               </div>
-            ))}
+            )}
           </div>
           <div className="p-5 flex items-center justify-between">
             <div>
@@ -1208,8 +1232,7 @@ function PuzzlePage() {
             </div>
             <div className="flex flex-col gap-2 items-end">
               {level < LEVEL_CFG.length ? (
-                <button onClick={handleNext}
-                  className="bg-[#D32F2F] text-white px-5 py-3 font-bold text-sm flex items-center gap-2 hover:bg-[#B71C1C]" style={OS}>
+                <button onClick={handleNext} className="bg-[#D32F2F] text-white px-5 py-3 font-bold text-sm flex items-center gap-2 hover:bg-[#B71C1C]" style={OS}>
                   MÀN {level + 1} ({LEVEL_CFG[level].g}×{LEVEL_CFG[level].g}) <ChevronRight className="w-4 h-4" />
                 </button>
               ) : (
@@ -1217,9 +1240,7 @@ function PuzzlePage() {
                   KẾT THÚC 🏆
                 </button>
               )}
-              <button onClick={() => setShowLb(true)} className="text-xs text-[#111111]/50 hover:text-[#D32F2F] font-semibold" style={VN}>
-                Xem bảng xếp hạng →
-              </button>
+              <button onClick={() => setShowLb(true)} className="text-xs text-[#111111]/50 hover:text-[#D32F2F] font-semibold" style={VN}>Xem bảng xếp hạng →</button>
             </div>
           </div>
         </div>
@@ -1227,7 +1248,7 @@ function PuzzlePage() {
     </div>
   );
 
-  // ── GAME OVER ──────────────────────────────────────────────────────────
+  // ─── SCREEN: GAME OVER ─────────────────────────────────────────────────────
   return (
     <div className="pt-16 min-h-screen bg-[#F5E9D0] flex flex-col">
       {lbDrawer}
@@ -1243,12 +1264,12 @@ function PuzzlePage() {
       </div>
       <div className="max-w-2xl mx-auto w-full px-4 py-8">
         <div className="flex items-center justify-between mb-4">
-          <p className="text-xs font-bold tracking-[0.2em] text-[#D32F2F]" style={OS}>🏆 BẢNG XẾP HẠNG</p>
-          <button onClick={() => setShowLb(true)} className="text-xs text-[#111111]/50 hover:text-[#D32F2F] font-semibold underline" style={VN}>Quản lý →</button>
+          <p className="text-xs font-bold tracking-[0.2em] text-[#D32F2F]" style={OS}>🏆 BẢNG XẾP HẠNG CHUNG CUỘC</p>
+          <button onClick={() => setShowLb(true)} className="text-xs text-[#111111]/50 hover:text-[#D32F2F] font-semibold underline" style={VN}>Xem tất cả →</button>
         </div>
         <div className="bg-white border-2 border-[#111111] divide-y divide-[#F5E9D0] mb-6">
           {lb.map((e, i) => (
-            <div key={e.id} className={`flex items-center gap-3 px-4 py-3 ${i < 3 ? "bg-[#FFFBF0]" : ""} ${e.name === pName ? "ring-2 ring-inset ring-[#D32F2F]" : ""}`}>
+            <div key={e._id} className={`flex items-center gap-3 px-4 py-3 ${i < 3 ? "bg-[#FFFBF0]" : ""} ${e.name.toLowerCase() === pName.trim().toLowerCase() ? "ring-2 ring-inset ring-[#D32F2F]" : ""}`}>
               <span className="text-base w-8 text-center">{medal(i)}</span>
               <span className="flex-1 text-sm font-medium truncate" style={VN}>{e.name}</span>
               <span className="font-bold text-[#D32F2F] tabular-nums" style={OS}>{e.score}</span>
@@ -1256,8 +1277,7 @@ function PuzzlePage() {
             </div>
           ))}
         </div>
-        <button onClick={() => { setPName(""); setPhase("start"); }}
-          className="w-full bg-[#111111] text-white py-4 font-bold text-sm flex items-center justify-center gap-2 hover:bg-black" style={OS}>
+        <button onClick={() => { setPName(""); setPhase("start"); }} className="w-full bg-[#111111] text-white py-4 font-bold text-sm flex items-center justify-center gap-2 hover:bg-black" style={OS}>
           <RotateCcw className="w-4 h-4" /> CHƠI LẠI
         </button>
       </div>
@@ -1467,7 +1487,11 @@ function QuizPage() {
             {QUIZ.length} câu hỏi trắc nghiệm — mỗi câu 30 giây.
           </p>
           <div className="grid grid-cols-3 gap-3 mb-8">
-            {([["6", "CÂU HỎI"], ["30s", "MỖI CÂU"], ["100", "ĐIỂM TỐI ĐA"]] as const).map(([v, l]) => (
+            {([
+              [QUIZ.length.toString(), "CÂU HỎI"], 
+              ["30s", "MỖI CÂU"], 
+              ["100", "ĐIỂM TỐI ĐA"]
+            ] as const).map(([v, l]) => (
               <div key={l} className="bg-[#F5E9D0] border border-[#EDD9A3] p-3 text-center">
                 <p className="text-[#D32F2F] text-xl font-bold" style={OS}>{v}</p>
                 <p className="text-[#111111]/55 text-[10px] font-semibold tracking-wider mt-0.5" style={OS}>{l}</p>
@@ -1507,29 +1531,59 @@ function QuizPage() {
               </p>
             </div>
           </div>
-          <div className="space-y-3 mb-8">
+          <div className="space-y-6 mb-8">
             {QUIZ.map((q, i) => {
-              const ua = answers[i];
-              const ok = ua === q.ans;
+              const ua = answers[i]; 
+              const ok = ua === q.ans; 
+              
               return (
-                <div key={i} className={`bg-white border-l-4 p-4 ${ok ? "border-green-600" : "border-red-600"}`}>
-                  <div className="flex gap-2 mb-2">
-                    {ok
-                      ? <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
-                      : <XCircle className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />}
-                    <p className="text-sm font-semibold text-[#111111]" style={VN}>{q.q}</p>
+                <div key={i} className={`bg-white border-t-4 p-5 shadow-sm ${ok ? "border-green-600" : "border-red-600"}`}>
+                  <div className="flex gap-2 mb-4">
+                    {ua === null ? (
+                      <span className="text-xs font-bold px-2 py-0.5 bg-gray-100 text-gray-500 rounded h-fit mt-0.5 flex-shrink-0" style={OS}>HẾT GIỜ</span>
+                    ) : ok ? (
+                      <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    ) : (
+                      <XCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                    )}
+                    <p className="text-sm font-bold text-[#111111]" style={VN}>
+                      Câu {i + 1}: {q.q}
+                    </p>
                   </div>
-                  <p className="text-xs text-green-700 pl-6" style={VN}>✓ {q.opts[q.ans]}</p>
-                  {!ok && ua !== null && (
-                    <p className="text-xs text-red-600/80 pl-6 mt-0.5" style={VN}>✗ {q.opts[ua]}</p>
-                  )}
-                  {!ok && ua === null && (
-                    <p className="text-xs text-gray-500 pl-6 mt-0.5" style={VN}>— Hết thời gian</p>
-                  )}
+                  <div className="space-y-2 mb-4">
+                    {q.opts.map((opt, optIdx) => {
+                      let optionCls = "border-[#111111]/10 text-gray-700 bg-gray-50/50";
+                      let badge = null;
+                      if (optIdx === q.ans) {
+                        optionCls = "border-green-600 bg-green-50 text-green-900 font-semibold";
+                        badge = <span className="text-[10px] font-bold bg-green-600 text-white px-2 py-0.5 rounded ml-auto" style={OS}>ĐÁP ÁN ĐÚNG</span>;
+                      }
+                      else if (optIdx === ua && !ok) {
+                        optionCls = "border-red-600 bg-red-50 text-red-900 font-semibold";
+                        badge = <span className="text-[10px] font-bold bg-red-600 text-white px-2 py-0.5 rounded ml-auto" style={OS}>BẠN CHỌN</span>;
+                      }
+
+                      return (
+                        <div key={optIdx} className={`border p-3 text-xs flex items-center gap-3 transition-all ${optionCls}`} style={VN}>
+                          <span className={`w-6 h-6 border flex items-center justify-center text-[10px] font-bold flex-shrink-0 ${
+                            optIdx === q.ans ? "bg-green-600 text-white border-green-600" : optIdx === ua ? "bg-red-600 text-white border-red-600" : "bg-white text-gray-500 border-gray-300"
+                          }`} style={OS}>
+                            {String.fromCharCode(65 + optIdx)}
+                          </span>
+                          <span>{opt}</span>
+                          {badge}
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <div className="bg-amber-50/60 border-l-2 border-amber-500 p-3 text-xs text-amber-900 leading-relaxed" style={VN}>
+                    <strong style={OS}>Giải thích:</strong> {q.ex}
+                  </div>
                 </div>
               );
             })}
           </div>
+
           <button onClick={startQuiz}
             className="w-full bg-[#111111] text-white py-4 font-bold flex items-center justify-center gap-2 hover:bg-black transition-colors"
             style={OS}>
