@@ -266,7 +266,7 @@ function PuzzlePiece({
 // ─── NAVBAR ──────────────────────────────────────────────────────────────────
 
 function Navbar({ active, setActive }: { active: Page; setActive: (p: Page) => void }) {
-  const items: { id: Page; label: string; Icon: typeof BookOpen }[] = [
+const items: { id: Page; label: string; Icon: any }[] = [
     { id: "home", label: "Nội Dung", Icon: BookOpen },
     { id: "puzzle", label: "Ghép Ảnh", Icon: () => (
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
