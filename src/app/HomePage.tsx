@@ -171,12 +171,14 @@ export default function HomePage() {
   ];
 
   const imagesSection4 = [
-    { url: "src/assets/images/2.jpg", title: "Phiên họp nghị viện. ", source: "UN Photo" },
-    { url: "src/assets/images/2...jpg", title: "Người dân đi bầu cử. ", source: "tuyengiao.vn" }
+    { url: "src/assets/images/2.jpg", title: "Phiên họp nghị viện.", source: "UN Photo" },
+    { url: "src/assets/images/2...jpg", title: "Người dân đi bầu cử.", source: "tuyengiao.vn" },
+    { url: "src/assets/images/2.1.....jpg", title: "hội nghị đối thoại giữa người đứng đầu cấp ủy, chính quyền với đoàn viên, hội viên và Nhân dân.", source: "Báo Ninh Bình" }
   ];
 
   const imagesSection5 = [
-    { url: "src/assets/images/2.2.jpeg", title: "Đối thoại chính quyền - người dân.", source: "Báo nhân dân" }
+    { url: "src/assets/images/2.2.jpeg", title: "Đối thoại chính quyền - người dân.", source: "Báo nhân dân" },
+    { url: "src/assets/images/2.2..jpg", title: "Người dân tham gia bỏ phiếu bầu cử đại biểu Quốc hội.", source: "VNU Media" }
   ];
 
   return (
