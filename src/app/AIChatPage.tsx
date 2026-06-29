@@ -114,47 +114,219 @@ function aiLookup(input: string): string {
 }
 
 interface ChatMsg { id: string; role: "user" | "ai"; text: string; }
+interface ProgressStep { step: string; detail: string; }
 
 export default function AIChatPage() {
   const [msgs, setMsgs] = useState<ChatMsg[]>([{ id: "0", role: "ai", text: AI_GREET }]);
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);
+  const [progressSteps, setProgressSteps] = useState<ProgressStep[]>([]);
+  const [activeAiMsgId, setActiveAiMsgId] = useState<string | null>(null);
+  const [showProgressDetails, setShowProgressDetails] = useState(false);
   const endRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [msgs, typing]);
+  }, [msgs, typing, progressSteps, activeAiMsgId, showProgressDetails]);
 
-  function send(text: string) {
+  async function send(text: string) {
     const t = text.trim();
     if (!t || typing) return;
     setInput("");
-    setMsgs(m => [...m, { id: Date.now().toString(), role: "user", text: t }]);
+    
+    const userMsgId = Date.now().toString();
+    const aiMsgId = (Date.now() + 1).toString();
+    
+    setMsgs(m => [...m, { id: userMsgId, role: "user", text: t }]);
+    setProgressSteps([]);
+    setActiveAiMsgId(null);
+    setShowProgressDetails(false);
     setTyping(true);
-    const reply = aiLookup(t);
-    setTimeout(() => {
-      setMsgs(m => [...m, { id: (Date.now() + 1).toString(), role: "ai", text: reply }]);
+    
+    try {
+      const response = await fetch("http://127.0.0.1:8000/chat_stream", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question: t }),
+      });
+      
+      if (!response.body) throw new Error("No body");
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder("utf-8");
+      
+      let aiText = "";
+      let firstChunk = true;
+      let buffer = "";
+      
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop() || "";
+        
+        for (const line of lines) {
+          if (line.trim().startsWith("data: ")) {
+            try {
+              const data = JSON.parse(line.trim().slice(6));
+              if (data.type === "progress") {
+                setProgressSteps(steps => [...steps, { step: data.step || "Đang xử lý", detail: data.detail || "" }]);
+              } else if (data.type === "chunk") {
+                const chunkText = data.text || "";
+                if (!chunkText) continue;
+
+                if (firstChunk) {
+                   setMsgs(m => [...m, { id: aiMsgId, role: "ai", text: chunkText }]);
+                   setActiveAiMsgId(aiMsgId);
+                   firstChunk = false;
+                   aiText = chunkText;
+                   continue;
+                }
+                aiText += chunkText;
+                setMsgs(m => m.map(msg => msg.id === aiMsgId ? { ...msg, text: aiText } : msg));
+              }
+            } catch(e) { 
+              console.error("JSON parse error on line:", line, e);
+            }
+          }
+        }
+      }
+      
+      if (firstChunk) {
+        setTyping(false);
+        setMsgs(m => [...m, { id: aiMsgId, role: "ai", text: "Xin lỗi, không có phản hồi." }]);
+      }
+      
+    } catch (e) {
       setTyping(false);
+      setMsgs(m => [...m, { id: aiMsgId, role: "ai", text: "Lỗi kết nối với Chatbot Server (Port 8000). Vui lòng đảm bảo server đang chạy." }]);
+    } finally {
+      setTyping(false);
+      setActiveAiMsgId(null);
+      setProgressSteps([]);
       inputRef.current?.focus();
-    }, Math.max(700, Math.min(1800, reply.length * 12)));
+    }
   }
 
   function Bubble({ text, role }: { text: string; role: "user" | "ai" }) {
-    // Parse **bold** and line breaks
+    const renderInline = (value: string) => (
+      value.split(/(\*\*.+?\*\*)/g).map((chunk, index) => {
+        if (chunk.startsWith("**") && chunk.endsWith("**")) {
+          return (
+            <strong key={index} className={role === "user" ? "text-[#FFD700]" : "text-[#111111]"}>
+              {chunk.slice(2, -2)}
+            </strong>
+          );
+        }
+        return chunk;
+      })
+    );
+
     const lines = text.split("\n");
+    const elements: React.ReactNode[] = [];
+    let listItems: React.ReactNode[] = [];
+    let listType: "ol" | "ul" | null = null;
+
+    const flushList = () => {
+      if (!listType || listItems.length === 0) return;
+      const ListTag = listType;
+      elements.push(
+        <ListTag key={`list-${elements.length}`} className={`${listType === "ol" ? "list-decimal" : "list-disc"} pl-5 my-2 space-y-1`}>
+          {listItems}
+        </ListTag>
+      );
+      listItems = [];
+      listType = null;
+    };
+
+    lines.forEach((line, index) => {
+      const trimmed = line.trim();
+
+      if (!trimmed) {
+        flushList();
+        elements.push(<div key={`space-${index}`} className="h-2" />);
+        return;
+      }
+
+      if (/^-{3,}$/.test(trimmed)) {
+        flushList();
+        elements.push(<hr key={`hr-${index}`} className="my-3 border-[#111111]/15" />);
+        return;
+      }
+
+      const headingMatch = trimmed.match(/^(#{1,4})\s+(.+)$/);
+      if (headingMatch) {
+        flushList();
+        const level = headingMatch[1].length;
+        elements.push(
+          <div key={`heading-${index}`} className={`${level <= 2 ? "text-base" : "text-sm"} font-bold text-[#D32F2F] mt-3 mb-1`}>
+            {renderInline(headingMatch[2])}
+          </div>
+        );
+        return;
+      }
+
+      const orderedMatch = trimmed.match(/^\d+[.)]\s+(.+)$/);
+      if (orderedMatch) {
+        if (listType !== "ol") flushList();
+        listType = "ol";
+        listItems.push(<li key={`ol-${index}`}>{renderInline(orderedMatch[1])}</li>);
+        return;
+      }
+
+      const unorderedMatch = trimmed.match(/^[-*•]\s+(.+)$/);
+      if (unorderedMatch) {
+        if (listType !== "ul") flushList();
+        listType = "ul";
+        listItems.push(<li key={`ul-${index}`}>{renderInline(unorderedMatch[1])}</li>);
+        return;
+      }
+
+      flushList();
+      elements.push(<p key={`p-${index}`} className="my-1.5">{renderInline(trimmed)}</p>);
+    });
+
+    flushList();
+
     return (
       <div className="text-sm leading-relaxed" style={VN}>
-        {lines.map((line, li) => (
-          <span key={li}>
-            {line.split(/\*\*(.+?)\*\*/g).map((chunk, ci) =>
-              ci % 2 === 1
-                ? <strong key={ci} className={role === "user" ? "text-[#FFD700]" : "text-[#111111]"}>{chunk}</strong>
-                : chunk
-            )}
-            {li < lines.length - 1 && <br />}
-          </span>
-        ))}
+        {elements}
+      </div>
+    );
+  }
+
+  function ProgressFooter({ compact = false }: { compact?: boolean }) {
+    return (
+      <div className={`${compact ? "mt-2" : ""} border-t border-[#111111]/10 pt-2`} style={VN}>
+        <div className="flex items-center justify-between gap-3">
+          <button
+            type="button"
+            onClick={() => setShowProgressDetails(value => !value)}
+            className="text-[11px] font-semibold text-[#D32F2F] hover:text-[#B71C1C] transition-colors"
+          >
+            {showProgressDetails ? "Ẩn chi tiết" : "Hiện chi tiết"}
+          </button>
+          <div className="flex gap-1 items-end" aria-label="Chatbot đang trả lời">
+            {[0, 160, 320].map(d => (
+              <span key={d} className="w-1.5 h-1.5 bg-[#D32F2F]/75 rounded-full"
+                style={{ display: "inline-block", animation: `chatbounce 1s ease-in-out ${d}ms infinite` }} />
+            ))}
+          </div>
+        </div>
+        {showProgressDetails && progressSteps.length > 0 && (
+          <div className="mt-2 space-y-1.5">
+            <div className="text-[11px] uppercase tracking-wide text-[#111111]/45 font-semibold">
+              Tiến trình xử lý
+            </div>
+            {progressSteps.slice(-4).map((item, index) => (
+              <div key={`${item.step}-${index}`} className="text-xs text-[#111111]/65 leading-relaxed">
+                <span className="font-semibold text-[#D32F2F]">{item.step}:</span> {item.detail}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     );
   }
@@ -193,7 +365,7 @@ export default function AIChatPage() {
 
       {/* Messages */}
       <div className="flex-1 overflow-y-auto px-4 py-5 space-y-4 max-w-3xl mx-auto w-full">
-        {msgs.map(msg => (
+        {msgs.filter(msg => msg.role === "user" || msg.text.trim()).map(msg => (
           <div key={msg.id} className={`flex gap-3 items-end ${msg.role === "user" ? "flex-row-reverse" : ""}`}>
             {/* AI avatar */}
             {msg.role === "ai" && (
@@ -205,23 +377,22 @@ export default function AIChatPage() {
             )}
             <div className={`max-w-[80%] shadow-sm ${msg.role === "user" ? "bg-[#D32F2F] text-white rounded-tl-2xl rounded-bl-2xl rounded-tr-sm rounded-br-2xl" : "bg-white border border-[#111111]/10 rounded-tr-2xl rounded-br-2xl rounded-tl-sm rounded-bl-2xl"} px-4 py-3`}>
               <Bubble text={msg.text} role={msg.role} />
+              {typing && msg.id === activeAiMsgId && <ProgressFooter compact />}
             </div>
           </div>
         ))}
 
-        {/* Typing dots */}
-        {typing && (
+        {/* Hiện tạm khi chưa có chunk đầu tiên */}
+        {typing && !activeAiMsgId && (
           <div className="flex gap-3 items-end">
             <div className="w-8 h-8 bg-[#D32F2F] rounded-full flex items-center justify-center flex-shrink-0 shadow">
               <svg viewBox="0 0 16 16" width="13" height="13">
                 <polygon points="8,1.5 9.4,5.6 13.7,5.6 10.3,8.1 11.5,12.2 8,9.7 4.5,12.2 5.7,8.1 2.3,5.6 6.6,5.6" fill="#FFD700" />
               </svg>
             </div>
-            <div className="bg-white border border-[#111111]/10 rounded-tr-2xl rounded-br-2xl rounded-bl-2xl px-4 py-3 flex gap-1.5 items-center">
-              {[0, 160, 320].map(d => (
-                <span key={d} className="w-2 h-2 bg-[#D32F2F]/50 rounded-full"
-                  style={{ display: "inline-block", animation: `chatbounce 1s ease-in-out ${d}ms infinite` }} />
-              ))}
+            <div className="bg-white border border-[#111111]/10 rounded-tr-2xl rounded-br-2xl rounded-tl-sm rounded-bl-2xl px-4 py-3 shadow-sm min-w-[170px] max-w-[80%]">
+              <div className="text-sm font-semibold text-[#111111]/75" style={VN}>Đang trả lời</div>
+              <ProgressFooter compact />
             </div>
           </div>
         )}

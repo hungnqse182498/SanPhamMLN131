@@ -8,6 +8,26 @@ NC='\033[0m' # No Color
 
 echo -e "${GREEN}🚀 Khởi động tất cả các dịch vụ...${NC}\n"
 
+# 0. Chạy MongoDB nếu có docker compose trong project
+MONGO_PID=""
+if [ -f "docker-compose.yml" ] || [ -f "compose.yml" ]; then
+    if command -v docker >/dev/null 2>&1 && docker compose version >/dev/null 2>&1; then
+        echo -e "${BLUE}▶ Khởi động MongoDB (Port 27017)...${NC}"
+        docker compose up -d mongodb
+    else
+        echo -e "${YELLOW}⚠️  Không tìm thấy Docker Compose. Hãy tự chạy MongoDB tại port 27017.${NC}"
+    fi
+elif command -v mongod >/dev/null 2>&1; then
+    if ! nc -z 127.0.0.1 27017 >/dev/null 2>&1; then
+        echo -e "${BLUE}▶ Khởi động MongoDB local (Port 27017)...${NC}"
+        mkdir -p ./data/db
+        mongod --dbpath ./data/db --bind_ip 127.0.0.1 --port 27017 >/tmp/mln131-mongod.log 2>&1 &
+        MONGO_PID=$!
+    fi
+else
+    echo -e "${YELLOW}⚠️  MongoDB chưa chạy tại 127.0.0.1:27017. Leaderboard API sẽ lỗi nếu chưa bật MongoDB.${NC}"
+fi
+
 # 1. Chạy Backend Node.js (Puzzle Game)
 echo -e "${BLUE}▶ Khởi động Node.js Server (Port 5000)...${NC}"
 npm run server &
@@ -38,7 +58,7 @@ echo -e "- Puzzle API: http://localhost:5000"
 echo -e "- Chatbot API: http://localhost:8000\n"
 
 # Lắng nghe sự kiện Ctrl+C để tự động tắt hết các process chạy ngầm
-trap "echo -e '\n${YELLOW}🛑 Đang dừng tất cả các dịch vụ...${NC}'; kill $NODE_PID $VITE_PID $PYTHON_PID 2>/dev/null; exit" SIGINT SIGTERM
+trap "echo -e '\n${YELLOW}🛑 Đang dừng tất cả các dịch vụ...${NC}'; kill $NODE_PID $VITE_PID $PYTHON_PID $MONGO_PID 2>/dev/null; exit" SIGINT SIGTERM
 
 # Chờ các process hoàn thành (thực tế là chờ cho đến khi user bấm Ctrl+C)
 wait $NODE_PID $VITE_PID $PYTHON_PID
