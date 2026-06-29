@@ -4,11 +4,11 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
-
+import { createServer } from 'http'; 
+import { Server } from 'socket.io'; 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Kích hoạt dotenv: đọc env gốc trước, rồi env riêng của main-repo nếu có
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 dotenv.config({ path: path.resolve(__dirname, '.env') });
 
@@ -16,15 +16,29 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const httpServer = createServer(app);
+const io = new Server(httpServer, {
+  cors: {
+    origin: "*", 
+    methods: ["GET", "POST"]
+  }
+});
+
+io.on('connection', (socket) => {
+  console.log(`🔌 Có người kết nối vào game! ID: ${socket.id}`);
+  
+  socket.on('disconnect', () => {
+    console.log(`❌ Người chơi ngắt kết nối. ID: ${socket.id}`);
+  });
+});
+
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/puzzle_game';
 const PORT = process.env.PORT || 5000;
 
-// Kết nối MongoDB
 mongoose.connect(MONGO_URI)
   .then(() => console.log('🚀 Kết nối MongoDB thành công!'))
   .catch(err => console.error('💥 Lỗi kết nối MongoDB:', err));
 
-// Định nghĩa Schema Bảng xếp hạng
 const leaderboardSchema = new mongoose.Schema({
   name: { type: String, required: true },
   score: { type: Number, required: true, default: 0 },
@@ -65,12 +79,13 @@ app.post('/api/leaderboard/save-game', async (req, res) => {
     }
 
     const updatedList = await Leaderboard.find().sort({ score: -1 });
+    io.emit('leaderboardUpdate', updatedList);
     res.json(updatedList);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`💻 Server API đang chạy mượt mà tại http://localhost:${PORT}`);
+httpServer.listen(PORT, () => {
+  console.log(`💻 Server Realtime & API đang chạy tại http://localhost:${PORT}`);
 });
