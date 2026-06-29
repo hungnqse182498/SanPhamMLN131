@@ -91,7 +91,7 @@ export default function QuizPage() {
   // ── START ──────────────────────────────────────────────────────────────────
   if (phase === "start") return (
     <div className="pt-16 min-h-screen bg-[#F5E9D0] flex flex-col">
-      <div className="bg-[#111111] text-white py-10 px-6 relative overflow-hidden">
+      <div className="bg-[#111111] text-white py-8 px-6 relative overflow-hidden">
         <div className="absolute inset-y-0 right-0 w-48 bg-[#D32F2F]" style={{ clipPath: "polygon(40% 0, 100% 0, 100% 100%, 0% 100%)" }} />
         <div className="relative max-w-5xl mx-auto">
           <span className="inline-block bg-[#D32F2F] text-white text-xs font-bold tracking-[0.3em] px-3 py-1 mb-3" style={OS}>ÔN TẬP</span>

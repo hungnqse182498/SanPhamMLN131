@@ -4,16 +4,12 @@ import { TOTAL_QUIZ } from "./data/quizData";
 import { io } from "socket.io-client";
 
 // Khởi tạo kết nối socket bên ngoài Component để tránh re-render sinh ra nhiều kết nối thừa
-const socket = io("http://localhost:5000", {
+const socket = io("http://localhost:5001", {
   transports: ["websocket"]
 });
 
 const OS = { fontFamily: "Oswald, sans-serif" } as const;
 const VN = { fontFamily: "Be Vietnam Pro, sans-serif" } as const;
-
-// ─── QUIZ DATA (Lấy chính xác 20 câu từ 50 câu) ──────────────────────────────
-
-const QUIZ = TOTAL_QUIZ.slice(30, 50);
 
 // ─── UTILS ───────────────────────────────────────────────────────────────────
 
@@ -92,7 +88,8 @@ export default function PuzzlePage() {
   const [movesUsed, setMovesUsed] = useState(0);
   
   // Quản lý câu hỏi đơn lẻ ngẫu nhiên liên tục
-  const [curQ, setCurQ] = useState<typeof QUIZ[0] | null>(null);
+  const [curQ, setCurQ] = useState<typeof TOTAL_QUIZ[0] | null>(null);
+  const [quizPool, setQuizPool] = useState<typeof TOTAL_QUIZ>([]);
   const [showQA, setShowQA] = useState(false);
   const [qCorrect, setQCorrect] = useState(0);
   const [qTotalAnswered, setQTotalAnswered] = useState(0);
@@ -213,10 +210,17 @@ export default function PuzzlePage() {
   }
 
   function triggerNewQuestion() {
-    const randomQuestion = QUIZ[Math.floor(Math.random() * QUIZ.length)];
-    setCurQ(randomQuestion);
+  let currentPool = [...quizPool];
+  if (currentPool.length === 0) {
+    currentPool = shuffle(TOTAL_QUIZ);
+  }
+  const nextQuestion = currentPool.pop(); 
+  if (nextQuestion) {
+    setCurQ(nextQuestion);
+    setQuizPool(currentPool); 
     setShowQA(true);
   }
+}
 
   function handleQA(choice: number) {
     if (qaLocked || !curQ) return;
