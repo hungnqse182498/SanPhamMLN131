@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+requests
+pillow
+python-dotenv
+jinja2
+langchain
+langchain-community
+langchain-text-splitters
+langchain-google-genai
+rank-bm25
+langchain-ollama
