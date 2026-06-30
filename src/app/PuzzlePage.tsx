@@ -3,6 +3,7 @@ import { RotateCcw, ChevronRight } from "lucide-react";
 
 const OS = { fontFamily: "Oswald, sans-serif" } as const;
 const VN = { fontFamily: "Be Vietnam Pro, sans-serif" } as const;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
 // ─── QUIZ DATA ───────────────────────────────────────────────────────────────
 
@@ -371,7 +372,7 @@ export default function PuzzlePage() {
 
   // 1. Tự động tải bảng xếp hạng từ DB khi mở game
   useEffect(() => {
-    fetch("http://localhost:5000/api/leaderboard")
+    fetch(`${API_BASE_URL}/api/leaderboard`)
       .then(res => res.json())
       .then(data => setLb(data))
       .catch(err => console.error("Lỗi tải BXH:", err));
@@ -387,7 +388,7 @@ export default function PuzzlePage() {
     setLvlScore(earned);
     setScore(ns);
 
-    fetch("http://localhost:5000/api/leaderboard/save-game", {
+    fetch(`${API_BASE_URL}/api/leaderboard/save-game`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name: pName, score: ns, level: level })

@@ -13,10 +13,22 @@ app.use(express.json());
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/puzzle_game';
 const PORT = process.env.PORT || 5000;
 
-// Kết nối MongoDB
-mongoose.connect(MONGO_URI)
-  .then(() => console.log('🚀 Kết nối MongoDB thành công!'))
-  .catch(err => console.error('💥 Lỗi kết nối MongoDB:', err));
+let mongoConnectionPromise;
+
+// Kết nối MongoDB, tái sử dụng connection khi chạy serverless trên Vercel
+function connectMongo() {
+  if (mongoose.connection.readyState === 1) return Promise.resolve();
+  if (!mongoConnectionPromise) {
+    mongoConnectionPromise = mongoose.connect(MONGO_URI)
+      .then(() => console.log('🚀 Kết nối MongoDB thành công!'))
+      .catch(err => {
+        mongoConnectionPromise = undefined;
+        console.error('💥 Lỗi kết nối MongoDB:', err);
+        throw err;
+      });
+  }
+  return mongoConnectionPromise;
+}
 
 // Định nghĩa Schema Bảng xếp hạng
 const leaderboardSchema = new mongoose.Schema({
@@ -26,6 +38,19 @@ const leaderboardSchema = new mongoose.Schema({
 }, { versionKey: false });
 
 const Leaderboard = mongoose.model('Leaderboard', leaderboardSchema, 'leaderboards');
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+app.use(async (req, res, next) => {
+  try {
+    await connectMongo();
+    next();
+  } catch (err) {
+    res.status(500).json({ error: 'Không thể kết nối MongoDB' });
+  }
+});
 
 // ─── API ROUTES ──────────────────────────────────────────────────────────────
 
@@ -46,7 +71,7 @@ app.post('/api/leaderboard/save-game', async (req, res) => {
 
   try {
     let player = await Leaderboard.findOne({ 
-      name: { $regex: new RegExp(`^${name.trim()}$`, 'i') } 
+      name: { $regex: new RegExp(`^${escapeRegExp(name.trim())}$`, 'i') }
     });
 
     if (player) {
@@ -65,6 +90,10 @@ app.post('/api/leaderboard/save-game', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`💻 Server API đang chạy mượt mà tại http://localhost:${PORT}`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`💻 Server API đang chạy mượt mà tại http://localhost:${PORT}`);
+  });
+}
+
+export default app;
