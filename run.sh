@@ -16,10 +16,11 @@ cd "$ROOT_DIR" || exit 1
 NODE_PID=""
 VITE_PID=""
 PYTHON_PID=""
+MONGO_PID=""
 
 cleanup() {
   echo -e "\n${YELLOW}🛑 Đang dừng tất cả các dịch vụ...${NC}"
-  for pid in "$NODE_PID" "$VITE_PID" "$PYTHON_PID"; do
+  for pid in "$NODE_PID" "$VITE_PID" "$PYTHON_PID" "$MONGO_PID"; do
     if [ -n "$pid" ] && kill -0 "$pid" 2>/dev/null; then
       kill "$pid" 2>/dev/null || true
     fi
@@ -58,7 +59,26 @@ fi
 echo -e "${GREEN}🚀 Khởi động local development...${NC}\n"
 echo -e "${YELLOW}ℹ️  Deploy Vercel không dùng run.sh; dùng npm run build + vercel.json + api/index.js.${NC}\n"
 
-# 1. Chạy Backend Node.js (Puzzle Game API)
+# 0. Chạy MongoDB local nếu project có docker-compose hoặc mongod.
+if [ -f "docker-compose.yml" ] || [ -f "compose.yml" ]; then
+  if command -v docker >/dev/null 2>&1 && docker compose version >/dev/null 2>&1; then
+    echo -e "${BLUE}▶ Khởi động MongoDB bằng Docker Compose (Port 27017)...${NC}"
+    docker compose up -d mongodb
+  else
+    echo -e "${YELLOW}⚠️  Không tìm thấy Docker Compose. Hãy tự chạy MongoDB tại port 27017.${NC}"
+  fi
+elif command -v mongod >/dev/null 2>&1; then
+  if ! nc -z 127.0.0.1 27017 >/dev/null 2>&1; then
+    echo -e "${BLUE}▶ Khởi động MongoDB local (Port 27017)...${NC}"
+    mkdir -p ./data/db
+    mongod --dbpath ./data/db --bind_ip 127.0.0.1 --port 27017 >/tmp/mln131-mongod.log 2>&1 &
+    MONGO_PID=$!
+  fi
+else
+  echo -e "${YELLOW}⚠️  MongoDB chưa chạy tại 127.0.0.1:27017. Leaderboard API sẽ lỗi nếu chưa bật MongoDB.${NC}"
+fi
+
+# 1. Chạy Backend Node.js (Puzzle Game API + realtime)
 echo -e "${BLUE}▶ Khởi động Puzzle API Node.js (Port 5000)...${NC}"
 npm run server &
 NODE_PID=$!

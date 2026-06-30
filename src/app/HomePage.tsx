@@ -1,11 +1,99 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 const OS = { fontFamily: "Oswald, sans-serif" } as const;
 const VN = { fontFamily: "Be Vietnam Pro, sans-serif" } as const;
+
+// ─── COMPONENT SLIDER ẢNH TỰ ĐỘNG CHẠY (REUSABLE CAROUSEL) ──────────────────
+interface ImageItem {
+  url: string;
+  title: string;
+  source: string;
+}
+
+function ImageSlider({ images }: { images: ImageItem[] }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Cơ chế tự động chạy qua lại (Auto-play) mỗi 3 giây
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  };
+
+  if (!images || images.length === 0) return null;
+
+  return (
+    <div className="mb-6 border-2 border-[#111111] bg-white shadow-[4px_4px_0px_0px_#111111] overflow-hidden">
+      {/* Khung hiển thị ảnh và nút bấm điều hướng */}
+      <div className="relative h-64 sm:h-80 md:h-[400px] bg-gray-100 flex items-center justify-center overflow-hidden group">
+        <img
+          src={images[currentIndex].url}
+          alt={images[currentIndex].title}
+          className="w-full h-full object-cover transition-all duration-500 ease-in-out"
+        />
+
+        {/* Nút bấm chuyển ảnh thủ công (Chỉ hiện khi có nhiều hơn 1 ảnh) */}
+        {images.length > 1 && (
+          <>
+            <button
+              onClick={prevSlide}
+              className="absolute left-3 top-1/2 -translate-y-1/2 bg-[#111111] hover:bg-[#D32F2F] text-white w-8 h-8 flex items-center justify-center font-bold border border-white transition-colors"
+            >
+              &#10094;
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-3 top-1/2 -translate-y-1/2 bg-[#111111] hover:bg-[#D32F2F] text-white w-8 h-8 flex items-center justify-center font-bold border border-white transition-colors"
+            >
+              &#10095;
+            </button>
+
+            {/* Chấm tròn định vị nhỏ phía dưới góc ảnh */}
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+              {images.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentIndex(idx)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    currentIndex === idx ? "bg-[#D32F2F] w-4" : "bg-[#111111]/40"
+                  }`}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+
+      {/* Khung tiêu đề ảnh và Ghi nguồn ảnh bên dưới */}
+      <div className="bg-[#111111] text-white px-4 py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-t-2 border-[#111111]">
+        <div className="flex items-center gap-2">
+          <span className="text-[#FFD700] text-xs">◆</span>
+          <p className="text-xs font-bold tracking-wide uppercase" style={OS}>
+            {images[currentIndex].title}
+          </p>
+        </div>
+        <p className="text-[10px] text-white/60 italic" style={VN}>
+          Nguồn: {images[currentIndex].source}
+        </p>
+      </div>
+    </div>
+  );
+}
 
 function SectionHeader({ tag, title }: { tag: string; title: string }) {
   return (
     <div className="flex items-center gap-4 mb-6">
-      <div className="bg-[#D32F2F] text-white text-xs font-bold tracking-[0.25em] px-3 py-1" style={OS}>{tag}</div>
+      <div className="bg-[#D32F2F] text-white text-xs font-bold tracking-[0.2em] px-3 py-1" style={OS}>{tag}</div>
       <h2 className="text-2xl md:text-3xl font-bold text-[#111111] leading-tight" style={OS}>{title}</h2>
       <div className="flex-1 h-px bg-[#111111]/15" />
     </div>
@@ -13,7 +101,7 @@ function SectionHeader({ tag, title }: { tag: string; title: string }) {
 }
 
 export default function HomePage() {
-  // ─── MANAGEMENT STATES (CÁC TRẠNG THÁI TƯƠNG TÁC) ──────────────────────────
+  // ─── MANAGEMENT STATES ────────────────────────────────────────────────────
   const [activeReasonTab, setActiveReasonTab] = useState<"ly_luan" | "thuc_tien">("ly_luan");
   const [activeBirthFactor, setActiveBirthFactor] = useState<number>(0);
   const [activeNatureTab, setActiveNatureTab] = useState<number>(0);
@@ -54,12 +142,47 @@ export default function HomePage() {
   const toolCards = [
     { title: "Thể Chế Hóa Ý Chí", body: "Nhà nước cụ thể hóa ý chí, nguyện vọng và quyền lực của nhân dân thành các văn bản pháp luật, chính sách và hành lang pháp lý. Quyền làm chủ không chỉ là tuyên bố suông mà được đảm bảo bằng sức mạnh cưỡng chế hành pháp." },
     { title: "Xác Lập Quyền & Trách Nhiệm", body: "Thông qua hệ thống pháp luật, Nhà nước phân định rõ quyền hạn và trách nhiệm của mỗi công dân — giúp người dân hiểu rõ ranh giới quyền làm chủ và tham gia quản lý xã hội một cách chủ động." },
-    { title: "Công Cụ Bảo Vệ", body: "Nhà nước sử dụng bộ máy tư pháp để ngăn chặn và trừng trị các hành vi độc đoán, xâm phạm quyền lợi chính đáng của người dân; bảo vệ nền dân chủ trước thế lực thù địch." },
+    { title: "Công Cụ Bảo Vệ", body: "Thông qua hệ thống tư pháp để ngăn chặn và trừng trị các hành vi độc đoán, xâm phạm quyền làm chủ; bảo vệ nền dân chủ trước thế lực thù địch." },
     { title: "Phương Thức Thực Hiện Dân Chủ", body: "Tạo điều kiện vận hành cơ chế thực tiễn để nhân dân tham gia trực tiếp và gián tiếp vào quản lý nhà nước. Hiện thực hóa triệt để phương châm dân bàn, dân làm, dân kiểm tra." }
   ];
 
+  // ─── MOCK DATA CHO DANH SÁCH ẢNH MINH HỌA CỦA TỪNG PHẦN ─────────────────────
+  // (Bạn có thể thay các link ảnh unsplash này bằng link ảnh thực tế của bạn)
+  const imagesSection1 = [
+    { url: "src/assets/images/1.1.jpeg", title: "Lãnh tụ V.I.Lênin phát biểu trước người dân tại Petrograd năm 1917.", source: "Britannica" },
+    { url: "src/assets/images/1.1.jpg", title: "Mao Trạch Đông đọc tuyên ngôn tại Quảng trường Thiên An Môn.", source: "Wikimedia Commons" },
+    { url: "src/assets/images/1.1....jpg", title: "Cuộc biểu tình chính trị tại Petrograd (Nga) ngày 18/6/1917. ", source: "Wikimedia Commons" },
+    { url: "src/assets/images/1.1..........jpg", title: "Đại hội Xô viết toàn Nga. ", source: "Wikimedia Commons" }
+
+  ];
+
+  const imagesSection2 = [
+    { url: "src/assets/images/1.2 (1).jpg", title: "Đại hội Xô viết Petrograd (1917).", source: "Wikimedia Commons." },
+    { url: "src/assets/images/1.2 (2).jpg", title: "Lênin phát biểu trước các tình nguyện viên Hồng quân trước khi họ lên đường tới Mặt trận Ba Lan, Moskva.", source: "Wikimedia Commons" },
+    { url: "src/assets/images/1.2....jpg", title: "Đại hội đại biểu nhân dân Trung Quốc.", source: "Wikimedia Commons" },
+    { url: "src/assets/images/1.2...jpg", title: "Người dân bỏ phiếu. ", source: "Wikimedia Commons" }
+
+  ];
+
+  const imagesSection3 = [
+    { url: "src/assets/images/1.3.webp", title: "Lực lượng Công an Nhân dân chính quy.", source: "Báo nhân dân" },
+    { url: "src/assets/images/1.3...webp", title: "Hội thảo “Xây dựng, hoàn thiện Nhà nước pháp quyền xã hội chủ nghĩa tại Đà Nẵng.", source: "Báo tiếng nói Việt Nam" },
+    { url: "src/assets/images/1.3....webp", title: "Đại đoàn kết dân tộc.", source: "Báo nhân dân" }
+  ];
+
+  const imagesSection4 = [
+    { url: "src/assets/images/2.jpg", title: "Phiên họp nghị viện.", source: "UN Photo" },
+    { url: "src/assets/images/2...jpg", title: "Người dân đi bầu cử.", source: "tuyengiao.vn" },
+    { url: "src/assets/images/2.1.....jpg", title: "hội nghị đối thoại giữa người đứng đầu cấp ủy, chính quyền với đoàn viên, hội viên và Nhân dân.", source: "Báo Ninh Bình" }
+  ];
+
+  const imagesSection5 = [
+    { url: "src/assets/images/2.2.jpeg", title: "Đối thoại chính quyền - người dân.", source: "Báo nhân dân" },
+    { url: "src/assets/images/2.2..jpg", title: "Người dân tham gia bỏ phiếu bầu cử đại biểu Quốc hội.", source: "VNU Media" }
+  ];
+
   return (
-    <div className="pt-16 min-h-screen bg-[#F5E9D0]">
+    <div className="pt-16 min-h-screen bg-[#F5E9D0] flex flex-col">
 
       {/* ── HERO ── */}
       <div className="relative bg-[#111111] overflow-hidden">
@@ -82,7 +205,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ── STATS BAR (SỬA LỖI CUỘN LỆCH VỊ TRÍ) ── */}
+      {/* ── STATS BAR ── */}
       <div className="bg-[#D32F2F] py-4 px-6 sticky top-16 z-40 shadow-md">
         <div className="max-w-5xl mx-auto flex flex-wrap justify-center gap-6 md:gap-10">
           {[
@@ -116,7 +239,7 @@ export default function HomePage() {
 
       <div className="max-w-5xl mx-auto px-4 py-10 space-y-12">
 
-        {/* ── THAO TÁC 1: LÝ DO NGHIÊN CỨU (Tab Chuyển Đổi) ── */}
+        {/* ── THAO TÁC 1: LÝ DO NGHIÊN CỨU ── */}
         <div className="bg-white border-2 border-[#111111] overflow-hidden shadow-[4px_4px_0px_0px_#111111]">
           <div className="bg-[#111111] px-6 py-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div className="flex items-center gap-2">
@@ -159,9 +282,13 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* ── THAO TÁC 2: SỰ RA ĐỜI (Sơ Đồ Chọn Nguyên Nhân & Hiển Thị Động) ── */}
+        {/* ── THAO TÁC 2: SỰ RA ĐỜI ── */}
         <div id="su-ra-doi">
           <SectionHeader tag="1.1" title="Sự Ra Đời của Nhà Nước XHCN" />
+          
+          {/* Ảnh minh họa dưới tiêu đề */}
+          <ImageSlider images={imagesSection1} />
+
           <div className="bg-[#D32F2F] text-white p-5 mb-4 relative overflow-hidden">
             <p className="text-[#FFD700] text-xs font-bold tracking-[0.2em] mb-1" style={OS}>ĐỊNH NGHĨA CHÍNH THỐNG</p>
             <p className="text-sm leading-relaxed text-white/95" style={VN}>
@@ -170,7 +297,6 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-12 gap-4">
-            {/* Thanh chọn yếu tố tác động bên trái */}
             <div className="md:col-span-5 flex flex-col gap-2">
               <span className="text-xs font-bold text-[#111111]/60 uppercase tracking-wider mb-1" style={OS}>Chọn nguồn gốc mâu thuẫn:</span>
               {birthFactors.map((item, index) => (
@@ -190,11 +316,10 @@ export default function HomePage() {
               ))}
             </div>
 
-            {/* Khung hiển thị nội dung phân tích chi tiết bên phải */}
             <div className="md:col-span-7 bg-[#EDD9A3] border-2 border-[#111111] p-6 flex flex-col justify-between shadow-[4px_4px_0px_0px_#111111]">
               <div>
                 <p className="text-[#D32F2F] text-xs font-bold tracking-[0.15em] mb-2" style={OS}>LUẬN ĐIỂM NGHIÊN CỨU</p>
-                <p className="text-sm text-[#111111] leading-relaxed transition-opacity duration-300" style={VN}>
+                <p className="text-sm text-[#111111] leading-relaxed" style={VN}>
                   {birthFactors[activeBirthFactor].detail}
                 </p>
               </div>
@@ -205,9 +330,12 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* ── THAO TÁC 3: BẢN CHẤT CỦA NNXHCN (Hệ Thống Tab Đồ Họa Phương Diện) ── */}
+        {/* ── THAO TÁC 3: BẢN CHẤT CỦA NNXHCN ── */}
         <div id="ban-chat">
           <SectionHeader tag="1.2" title="Bản Chất Ba Phương Diện Của Nhà Nước XHCN" />
+          
+          {/* Ảnh minh họa dưới tiêu đề */}
+          <ImageSlider images={imagesSection2} />
           
           <div className="flex border-b-2 border-[#111111] mb-4 bg-white/40 p-1">
             {natureData.map((tab, idx) => (
@@ -241,11 +369,13 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* ── THAO TÁC 4: CHỨC NĂNG VÀ ĐỐI CHIẾU TRẤN ÁP (Bộ Lọc Phân Loại & Đóng/Mở So Sánh) ── */}
+        {/* ── THAO TÁC 4: CHỨC NĂNG VÀ ĐỐI CHIẾU TRẤN ÁP ── */}
         <div id="cau-truc-chuc-nang">
           <SectionHeader tag="1.3" title="Cấu Trúc Chức Năng & Điểm Khác Biệt Tuyệt Đối" />
           
-          {/* Bộ lọc phân loại căn cứ chức năng */}
+          {/* Ảnh minh họa dưới tiêu đề */}
+          <ImageSlider images={imagesSection3} />
+          
           <div className="flex flex-wrap gap-2 mb-4">
             {[
               { id: "scope", label: "Căn cứ Phạm vi tác động" },
@@ -267,7 +397,6 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* Render danh sách chức năng tương ứng bộ lọc */}
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 mb-6">
             {functionData[activeFuncBasis].map((func, i) => (
               <div key={i} className="bg-white border-2 border-[#111111] p-4 shadow-[2px_2px_0px_0px_#111111]">
@@ -283,7 +412,6 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* Khung tương tác bật/tắt đối chiếu mô hình trấn áp */}
           <div className="border-2 border-[#111111] bg-white overflow-hidden shadow-[4px_4px_0px_0px_#111111]">
             <div className="bg-[#EDD9A3] px-6 py-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b-2 border-[#111111]">
               <div>
@@ -309,22 +437,25 @@ export default function HomePage() {
             </div>
             <div className="p-5 min-h-[90px] bg-[#EDD9A3]/10">
               {compareMode === "bo_lot" ? (
-                <p className="text-xs md:text-sm text-[#111111]/80 leading-relaxed animate-fadeIn" style={VN}>
-                   <strong>Nhà nước bóc lột cũ:</strong> Hoạt động như một công cụ chuyên chính của một <em>thiểu số giai cấp thống trị</em> dùng để áp bức, cưỡng chế và cấu xé quyền lợi của đại đa số quần chúng nhân dân lao động trong xã hội nhằm độc chiếm tư liệu sản xuất.
+                <p className="text-xs md:text-sm text-[#111111]/80 leading-relaxed" style={VN}>
+                   <strong>Nhà nước bóc lột cũ:</strong> Hoạt động như một công cụ chuyên chính của một <em>thiểu số giai cấp thống trị</em> dùng để áp bức, cưỡng chế và cấu xé quyền lợi của đại đa số quần chúng nhân dân lao động.
                 </p>
               ) : (
-                <p className="text-xs md:text-sm text-[#111111]/80 leading-relaxed animate-fadeIn" style={VN}>
-                   <strong>Nhà nước XHCN kiểu mới:</strong> Thực hiện sự trấn áp của <em>đại đa số nhân dân lao động</em> chống lại thiểu số bóc lột cũ đã bị lật đổ cùng các phần tử phản động phá hoại; lấy nhiệm vụ <strong>tổ chức và xây dựng kinh tế - xã hội làm nội dung cốt lõi và tối thượng</strong> (Theo luận điểm V.I. Lênin).
+                <p className="text-xs md:text-sm text-[#111111]/80 leading-relaxed" style={VN}>
+                   <strong>Nhà nước XHCN kiểu mới:</strong> Thực hiện sự trấn áp của <em>đại đa số nhân dân lao động</em> chống lại thiểu số bóc lột cũ; lấy nhiệm vụ <strong>tổ chức và xây dựng kinh tế - xã hội làm nội dung cốt lõi</strong> (Theo V.I. Lênin).
                 </p>
               )}
             </div>
           </div>
         </div>
 
-        {/* ── THAO TÁC 5: MỐI QUAN HỆ BIỆN CHỨNG (Interactive Workflow) ── */}
+        {/* ── THAO TÁC 5: MỐI QUAN HỆ BIỆN CHỨNG ── */}
         <div id="co-so-dan-chu">
           <SectionHeader tag="2.1" title="Dân Chủ XHCN — Cơ Sơ và Nền Tảng Biện Chứng" />
           
+          {/* Ảnh minh họa dưới tiêu đề */}
+          <ImageSlider images={imagesSection4} />
+
           <div className="grid md:grid-cols-3 gap-3 mb-4">
             {[
               { id: 0, title: "1. Cơ sở nền tảng", desc: "Tạo điều kiện để người dân bầu cử người đại diện quyền lực hợp pháp." },
@@ -349,29 +480,31 @@ export default function HomePage() {
           <div className="bg-[#111111] text-white p-5 border-l-4 border-[#FFD700]">
             <p className="text-[#FFD700] text-xs font-bold tracking-wider mb-1" style={OS}>HỆ QUẢ LUẬN CHỨNG CHI TIẾT:</p>
             {activeRelationStep === 0 && (
-              <p className="text-xs md:text-sm text-white/85 leading-relaxed animate-fadeIn" style={VN}>
+              <p className="text-xs md:text-sm text-white/85 leading-relaxed" style={VN}>
                 Dân chủ xã hội chủ nghĩa đảm bảo tính chính danh của bộ máy nhà nước. Chỉ khi nhân dân được thực hiện quyền lực chính trị một cách tự do, bình đẳng, các cơ quan công quyền mới thực sự đại diện cho ý chí cốt lõi của toàn xã hội.
               </p>
             )}
             {activeRelationStep === 1 && (
-              <p className="text-xs md:text-sm text-white/85 leading-relaxed animate-fadeIn" style={VN}>
+              <p className="text-xs md:text-sm text-white/85 leading-relaxed" style={VN}>
                 Nền dân chủ tạo hành lang thông thoáng để nhân dân trực tiếp tham gia đóng góp giải pháp vĩ mô, đồng thời thực thi vai trò giám sát, ngăn chặn kịp thời các mầm mống tha hóa, quan liêu, hách dịch của cán bộ công quyền.
               </p>
             )}
             {activeRelationStep === 2 && (
-              <p className="text-xs md:text-sm text-red-300 font-medium leading-relaxed animate-fadeIn" style={VN}>
+              <p className="text-xs md:text-sm text-red-300 font-medium leading-relaxed" style={VN}>
                 Cảnh báo lý luận: Bất kỳ hành vi buông lỏng hay chà đạp lên các nguyên tắc dân chủ nào cũng sẽ làm suy yếu bản chất nhà nước, biến công cụ của nhân dân thành phương tiện đặc quyền phục vụ lợi ích cục bộ của thiểu số phe nhóm.
               </p>
             )}
           </div>
         </div>
 
-        {/* ── THAO TÁC 6: NHÀ NƯỚC LÀ CÔNG CỤ (Khung Chọn Tính Năng Hiện Thực Hóa) ── */}
+        {/* ── THAO TÁC 6: NHÀ NƯỚC LÀ CÔNG CỤ ── */}
         <div id="cong-cu-thuc-thi">
           <SectionHeader tag="2.2" title="Nhà Nước — Công Cụ Thực Thi Quyền Làm Chủ" />
           
+          {/* Ảnh minh họa dưới tiêu đề */}
+          <ImageSlider images={imagesSection5} />
+
           <div className="grid md:grid-cols-12 gap-4">
-            {/* Cột chọn vai trò bên trái */}
             <div className="md:col-span-4 flex flex-col gap-2">
               {toolCards.map((card, idx) => (
                 <button
@@ -389,12 +522,11 @@ export default function HomePage() {
               ))}
             </div>
 
-            {/* Màn hình hiển thị nội dung bên phải */}
             <div className="md:col-span-8 bg-white border-2 border-[#111111] p-6 shadow-[4px_4px_0px_0px_#111111] flex flex-col justify-between min-h-[180px]">
               <div>
                 <p className="text-[#D32F2F] text-xs font-bold tracking-[0.2em] mb-1" style={OS}>VA TRÒ THỰC THI {activeToolCard + 1}</p>
                 <h3 className="text-base font-bold text-[#111111] mb-2" style={OS}>{toolCards[activeToolCard].title}</h3>
-                <p className="text-xs md:text-sm text-[#111111]/80 leading-relaxed animate-fadeIn" style={VN}>
+                <p className="text-xs md:text-sm text-[#111111]/80 leading-relaxed" style={VN}>
                   {toolCards[activeToolCard].body}
                 </p>
               </div>
