@@ -47,11 +47,11 @@ function PuzzlePiece({
 // ─── PUZZLE GAME CONFIG ──────────────────────────────────────────────────────
 
 const LEVEL_IMAGES = [
-  './src/assets/images/logo.png',
-  './src/assets/images/logo1.jpg',
-  './src/assets/images/logo2.png',
-  './src/assets/images/logo3.jpg',
-  './src/assets/images/logo4.jpg'
+  'src/assets/images/1.3.webp',
+  'src/assets/images/logo1.jpg',
+  'src/assets/images/logo2.png',
+  'src/assets/images/1.3....webp',
+  'src/assets/images/MLN3 (5).png'
 ];
 
 const LEVEL_CFG = [
